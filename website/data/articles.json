@@ -1,4 +1,23 @@
 {
-  "generated_at": "",
-  "sections": []
+  "generated_at": "2026-04-04T13:40:06.769128+00:00",
+  "total_articles": 1,
+  "sections": [
+    {
+      "id": "epic-ai",
+      "name": "EPIC AI",
+      "description": "Epic Systems AI 전략 벤치마크, 국내외 의료 IT 혁신",
+      "articles": [
+        {
+          "id": "d518f037aea0",
+          "title": "Affordable healthcare: Firm launches integrated AI-powered telemedicine platform to address medical challenges - Blueprint Newspapers",
+          "summary_ko": "한 기업이 의료 접근성 개선을 위해 AI 기반 통합 원격진료 플랫폼을 출시했습니다. 이 플랫폼은 의료비 부담을 줄이고 의료 서비스 접근성을 높이는 것을 목표로 하며, AI 기술을 활용해 진단 보조 및 환자 관리를 효율화합니다. 이는 의료 IT 시장의 성장 기회를 보여주며, CEO와 투자자들에게는 디지털 헬스케어 분야의 수익성 있는 비즈니스 모델 구축 가능성을, 의료 전문가들에게는 기술을 통한 의료 질 향상과 운영 효율성 개선의 기회를 시사합니다.",
+          "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQMGhqSTF4N1puMTB1X1dQY0xvOXEzT0VqTWZnaExEeGhfbGozemc5ZmFZU3J0ck1GSGFBZlFEc2NZdnFBZWtSVFNpdVNOLU1NeUZNdllXaGVKTDFZbTJxZm1ZRXVadkpXUjlSY0VaclNHNmY3U3hjT2JJczNiVktPeXhGQlFIQllvNFA5dzFOeHJvbUpUYlFQdFltZ3VvcnhnNk9zYllMeWQ1NXZkYVVfVWVpWHZSZnQ1TDRQR2I2NnpsOXJxTldjdHNfbw?oc=5",
+          "source_name": "Google News: digital health AI platform",
+          "channel": 3,
+          "published_at": "2026-04-03T15:30:53+00:00",
+          "section": "epic-ai"
+        }
+      ]
+    }
+  ]
 }
