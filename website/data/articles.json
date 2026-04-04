@@ -1,21 +1,415 @@
 {
-  "generated_at": "2026-04-04T13:40:06.769128+00:00",
-  "total_articles": 1,
+  "generated_at": "2026-04-04T13:44:59.529853+00:00",
+  "total_articles": 39,
   "sections": [
+    {
+      "id": "agentic-ai",
+      "name": "Agentic AI",
+      "description": "기업용 AI 에이전트 트렌드 및 도입 사례",
+      "articles": [
+        {
+          "id": "4322f6466e17",
+          "title": "섀도우 AI 해법, 킬로의 혁신이 가져올 변화 - 유스연합",
+          "summary_ko": "기업들이 무단으로 사용하는 섀도우 AI 문제를 해결하기 위해 킬로가 새로운 솔루션을 제시했습니다. 이는 직원들의 통제되지 않은 AI 도구 사용으로 인한 보안 위험, 데이터 유출, 규정 위반을 방지하는 데 중요합니다. CEO와 IT 리더들은 이 기술을 통해 AI 사용을 투명하게 관리하고 비즈니스 리스크를 줄일 수 있으며, 투자자들은 섀도우 AI 관리 시장의 성장 가능성을 주목해야 합니다.",
+          "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5CX1JWRDdBbGVrSDFmVVI3OEcxd0JpUTZTdlh6Wnp5WEVMOWxKSDFmLWtHRzRPUjlpYzg5eGhvalozUUQ0OHZHdEgzWTFnV29nY2c?oc=5",
+          "source_name": "Google News: AI 에이전트 업무 도입 생산성",
+          "channel": 3,
+          "published_at": "2026-04-04T03:59:57+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "36e9c12642e0",
+          "title": "Anthropic cuts off the ability to use Claude subscriptions with OpenClaw and third-party AI agents",
+          "summary_ko": "Anthropic이 Claude Pro와 Max 구독 서비스를 OpenClaw 같은 제3의 AI 에이전트 도구와 연동하는 기능을 2026년 4월 4일부터 차단한다고 발표했습니다. 회사는 이러한 사용 패턴이 자사의 컴퓨팅 리소스에 과도한 부담을 주고 있으며, 더 많은 사용자에게 안정적인 서비스를 제공하기 위한 조치라고 설명했습니다. 이 결정은 AI 모델 제공사가 자사 플랫폼의 사용 방식을 제한할 수 있는 권한을 가지고 있으며, 구독자들이 예상한 서비스 범위의 축소를 의미한다는 점에서 중요합니다. CEO와 투자자들에게는 AI 서비스 제공 시 리소스 관리와 이용약관 명확화의 중요성을, IT 전문가들에게는 벤더 정책 변화에 대한 대비책 마련의 필요성을 시사합니다.",
+          "url": "https://venturebeat.com/technology/anthropic-cuts-off-the-ability-to-use-claude-subscriptions-with-openclaw-and",
+          "source_name": "VentureBeat AI",
+          "channel": 2,
+          "published_at": "2026-04-04T03:55:25+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "690241af3795",
+          "title": "Karpathy shares 'LLM Knowledge Base' architecture that bypasses RAG with an evolving markdown library maintained by AI",
+          "summary_ko": "Andrej Karpathy가 RAG(Retrieval-Augmented Generation) 방식을 대체하는 'LLM Knowledge Base' 아키텍처를 제시했으며, 이는 AI가 지속적으로 관리하는 마크다운 라이브러리를 통해 컨텍스트 손실 문제를 해결한다. 기존의 벡터 데이터베이스와 RAG 파이프라인이라는 복잡한 엔터프라이즈 솔루션 대신, LLM 자체가 연구 기록을 관리하도록 함으로써 AI 개발 시 세션 종료 후 컨텍스트를 재구성하는 비효율을 제거한다. 이 접근 방식은 기업 CEO와 AI 개발자에게 더 간단하고 비용 효율적인 방법으로 AI 모델의 연속성과 생산성을 향상시킬 수 있는 대안을 제시한다.",
+          "url": "https://venturebeat.com/data/karpathy-shares-llm-knowledge-base-architecture-that-bypasses-rag-with-an",
+          "source_name": "VentureBeat AI",
+          "channel": 2,
+          "published_at": "2026-04-03T23:30:50+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "89ac71956383",
+          "title": "Nvidia launches enterprise AI agent platform with Adobe, Salesforce, SAP among 17 adopters at GTC 2026",
+          "summary_ko": "Nvidia는 GTC 2026에서 Adobe, Salesforce, SAP 등 17개 기업과 함께 엔터프라이즈급 AI 에이전트 플랫폼인 'Agent Toolkit'을 출시했다. 이 오픈소스 플랫폼은 자율형 AI 에이전트 구축을 위한 모델, 런타임, 보안 프레임워크, 최적화 라이브러리를 제공하며, 고객 서비스부터 반도체 설계까지 다양한 업무를 자동화할 수 있다. Nvidia가 설계하고 유지보수하는 공유 기반 위에 포춘 500대 기업들이 차세대 AI 제품을 구축하기로 합의함으로써, Nvidia는 엔터프라이즈 AI 시장에서 사실상의 표준 플랫폼 지위를 확보했다는 점이 중요하다. 이는 의료, 제조, 금융 등 모든 산업에 걸쳐 AI 에이전트 수요가 급증할 것으로 예상되는 상황에서 투자자와",
+          "url": "https://venturebeat.com/technology/nvidia-launches-enterprise-ai-agent-platform-with-adobe-salesforce-sap-among",
+          "source_name": "VentureBeat AI",
+          "channel": 2,
+          "published_at": "2026-04-03T23:25:01+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "4534f812f6ff",
+          "title": "'기업에 AI를 더하여, 기업 경쟁력 높이고 성장 추구'...중기부, AI 정책 통합 브랜드 모두의 “AI+”",
+          "summary_ko": "중소벤처기업부가 산재된 AI 정책들을 통합 브랜드 \"AI+\"로 묶어 체계적으로 추진하고 있습니다. 기존에는 각 사업별로 분산된 홍보로 인해 중소·벤처기업의 AI 정책 인지도가 낮았으나, 통합 브랜드를 통해 명확한 정책메시지 전달과 기업의 AI 도입 활성화를 목표로 합니다. 이는 중소기업의 AI 경쟁력 강화와 디지털 전환을 가속화하는 동시에, 정부 정책의 효율성을 높이는 중요한 전략입니다. CEO와 투자자에게는 정부의 체계적인 AI 지원 정책 활용 기회를 명확히 인식하고, 기업의 AI 도입 시 다양한 정책 지원을 적극 활용할 수 있다는 점이 시사됩니다.",
+          "url": "https://www.aitimes.kr/news/articleView.html?idxno=39413",
+          "source_name": "인공지능신문",
+          "channel": 2,
+          "published_at": "2026-04-03T19:17:29+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "4ec099f3c118",
+          "title": "Arcee's new, open source Trinity-Large-Thinking is the rare, powerful U.S.-made AI model that enterprises can download and customize",
+          "summary_ko": "Arcee가 오픈소스 AI 모델인 Trinity-Large-Thinking을 Apache 2.0 라이선스로 공개했으며, 이는 기업들이 자유롭게 다운로드 및 커스터마이징할 수 있는 미국산 대형 AI 모델로서 중국 기업들의 폐쇄형 모델 전환에 대한 대항마로 평가된다. 오픈소스 AI 모델의 주도권이 메타와 중국 기업들 사이를 오가면서 미국의 AI 기술 주권이 약화되고 있는 상황에서 이 공개 모델은 기업과 개발자들에게 독립적인 대안을 제공한다는 점에서 중요하다. 기업 CEO와 투자자들에게는 폐쇄형 프로프리터리 모델에 의존하지 않고도 고성능 AI를 활용할 수 있는 새로운 기회를 제시하며, 의료 IT 전문가들에게는 규제 요구사항에 맞게 맞춤형 모델을 개발할 수 있",
+          "url": "https://venturebeat.com/technology/arcees-new-open-source-trinity-large-thinking-is-the-rare-powerful-u-s-made",
+          "source_name": "VentureBeat AI",
+          "channel": 2,
+          "published_at": "2026-04-03T15:17:02+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "9b4783fd2655",
+          "title": "구글, “가장 강력한 오픈소스 AI 모델, ‘젬마 4’ 공개\"...파라미터당 최고 지능·에이전트 ·온디바이스까지",
+          "summary_ko": "구글이 파라미터당 최고 수준의 지능을 갖춘 오픈소스 AI 모델 '젬마 4'를 공개했으며, 고급 추론과 에이전트 기반 워크플로우에 특화되어 있다. 젬마 모델은 출시 이후 4억 회 이상 다운로드되고 10만 개 이상의 변형 모델로 구성된 활발한 생태계를 형성해 기술 커뮤니티의 광범위한 지지를 받고 있다. 이는 오픈소스 AI의 대중화와 기업 맞춤형 솔루션 개발이 가능함을 의미하므로, CEO와 투자자들에게는 엔터프라이즈급 AI 솔루션의 비용 효율성 향상을, 의료 IT 전문가들에게는 온디바이스 배포로 데이터 프라이버시를 보호하면서도 고성능 AI 구현이 가능함을 시사한다.",
+          "url": "https://www.aitimes.kr/news/articleView.html?idxno=39411",
+          "source_name": "인공지능신문",
+          "channel": 2,
+          "published_at": "2026-04-03T14:40:36+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "0e9f2fffb0ad",
+          "title": "Agentic AI Is Moving Fast and Businesses Need to Catch Up - HackerNoon",
+          "summary_ko": "Agentic AI(자율 에이전트 AI)가 빠르게 발전하고 있으며 기업들이 이에 대응해야 한다는 내용의 기사입니다. 자율적으로 작업을 수행할 수 있는 AI 에이전트 기술이 성숙단계에 접어들면서 업무 자동화와 의사결정 프로세스에 혁신을 가져오고 있습니다. 이는 조직의 효율성 극대화와 경쟁력 확보에 결정적 역할을 할 것으로 예상되어, CEO와 IT 리더십은 Agentic AI 도입 전략을 즉시 수립하고 조직 변화 관리에 착수해야 합니다.",
+          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOOEhZLTVfSV9hVzdyQ1Q4U1ZDTm1UQ2owMGdraG9ESC1kbFAwZy1TSWxUVXRKOHZtNWtuaElrbHRVc0xtbnozRk5TWFVROURmY3FDYmxHVmF3NjEtaWhfSjBhdWJ6amNlNWVHdkNJbVk0RE9zTTc3QW0zbENzTy1QNGtHb0lUbnM?oc=5",
+          "source_name": "Google News: agentic AI business automation",
+          "channel": 3,
+          "published_at": "2026-04-03T01:33:05+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "8e7d65ff95b0",
+          "title": "Box Agent Launch Puts AI Workflows And Valuation In Investor Focus - simplywall.st",
+          "summary_ko": "Box가 AI 에이전트를 출시하며 자동화된 업무 흐름 솔루션을 선보였고, 이는 클라우드 콘텐츠 관리 시장에서 회사의 경쟁력을 강화하는 동시에 투자자들의 밸류에이션 평가에 큰 영향을 미치고 있습니다. AI 에이전트는 문서 처리, 승인 프로세스 등 반복적인 업무를 자동화해 기업 고객의 운영 효율성을 크게 높일 수 있어 상용화 가능성이 높은 기술입니다. 기업 CEO와 투자자들은 Box의 AI 기반 차별화 전략이 지속적인 매출 성장과 이윤 확대로 이어질지 주목해야 하며, 의료·금융 등 규제 산업에서의 구현 성공 여부가 향후 밸류에이션 상승의 핵심 변수가 될 것입니다.",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOTC1Tc21nUzdQRTBQWVJocklvdEh2X3J2bGF5YTg2U1dXalRoeUwzRkc5bFE2UGxQS1FSVmpER2pobjVPVG1kZzZJRUNxeGdteDctT3E0VlNaRDczVnRKT2J3M3QwVEJFU3hKM2k1c3F3UnRTN0xYSnlDU0NfQnUyRGdtbEhGZUcyX0N4WWdCUlBUeVRwbHRQTlBwS2k1M1AyMFRycjhOR1ZqWFVMRkRiRWx5XzNxeEl1MTBr0gHAAUFVX3lxTE9rVkhidGxGT05BNmVaNFpQdl95S1FRd3VEVHdJMUdndDFUMHN1dlM0b3NsdzJkRzRpSjdrMEFkZ21WM1BiQlppc3ZPTXhidjFqaWNBaWxCR29rNEY3dHZXT3huVFY0WmJaSVJHbzZ0MGU3REc3SFF5MGdfSmxpVXRXQUlrSWVfdDBGYzFuME5qZFkteVRrZ1AyWFlsRVNEek51R2RubmtrOVNWZl9qNjF1aU00SlVrYUZDZWFMSGItVQ?oc=5",
+          "source_name": "Google News: AI agent enterprise workflow",
+          "channel": 3,
+          "published_at": "2026-04-02T22:53:17+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "6287e7439a17",
+          "title": "From single AI agents to multi-agent systems: Why 2026 will redefine enterprise automation - ET CIO",
+          "summary_ko": "# 기사 요약\n\n2026년에는 단일 AI 에이전트에서 다중 AI 에이전트 시스템으로의 전환이 기업 자동화를 재정의할 것으로 예상된다. 다중 에이전트 시스템은 서로 협력하며 복잡한 업무를 처리할 수 있어 기업 운영의 효율성과 생산성을 대폭 향상시킬 수 있다는 점에서 중요하다. CEO와 투자자는 다중 에이전트 기술 도입으로 비용 절감과 경쟁력 강화의 기회를 확보해야 하며, 의료 IT 전문가들은 이 기술이 병원 운영 자동화와 환자 데이터 관리 등 의료 산업 전반에 혁신을 가져올 수 있음을 고려해야 한다.",
+          "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxOdFlwbEtZMm1HRm54RTFNcDRmMlFDV3BNaXE2N3VlT1d2d29IajFDZ2VoVmlEZ3dTV09SVkxPLUM1Q0NOOC1VQmRFYmNrYkdYSW5SdTB2bGJHNWN2b19FcHAwNDN0RVZ2ckp3TUt3VGNrSUVBYlFuQlJ1U1I2OUs2U3dNcEl5MmdfZFlzaWdnWm5UQ0x3WGNmSnVsU29ES0hQQW4wZWVPQU1xVHh2ZE1DbDBub3c5QzZGcEhiNlhjM01MRVFVdEN0S3hPT1RSa2NmUURzazZKcTZNam56SlhGT2VNcnA2TlVnZ3huWHJIOW1lem8xOVpwOTBXcndvZ9IBgwJBVV95cUxNLU9HWTVPdm5MNTFYcHA1UnpUN1NvX2poTXBlMFEtcXY2N2lsdXNlRnBzY1JuczlvaFU1TXlyd0JSczY5bWNyNzhxS1djaklLdzRnaGduZDlIUWZ5a2t1dTlhSjdiR1hHZURQYXFzcHJpTnlreDh5ckhNR1NWYWhfak5XYmhsUTFlNUZrWHZLdldRMUpHa2xaeXpQREU1XzNtd2RxN3Zvbld2cjk1NWtILTNtS3VfU1Q0QkZvcFdkQlhxdWpYeE9COWdFMl9oM2hFUVgxVzdJTFEyQTBZbFh1UGpYWGVOV3dsZWZiOFMzSmYwRUZBZ2pwakRYY3ZZWVEzeUlz?oc=5",
+          "source_name": "Google News: AI agent enterprise workflow",
+          "channel": 3,
+          "published_at": "2026-04-02T03:20:00+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "814419ec18cd",
+          "title": "HCLTech introduces AI Force 2.0 for enterprise workflow automation - Techcircle",
+          "summary_ko": "HCL테크는 엔터프라이즈 워크플로우 자동화를 위한 AI Force 2.0을 출시했습니다. 이 솔루션은 생성형 AI 기술을 활용하여 기업의 업무 프로세스를 자동화하고 효율성을 높이는 데 중점을 두고 있습니다. 이는 기업들이 디지털 트랜스포메이션 시대에 AI 기반 자동화를 도입함으로써 운영 비용 절감과 생산성 향상을 실현할 수 있음을 의미하며, CEO와 투자자들은 AI 자동화 솔루션 시장의 성장 잠재력과 IT 의료 업계의 디지털 혁신 기회를 주목할 필요가 있습니다.",
+          "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOUG1VVGY2UXN5eFhiR3AtcjlibGdkTjVvQzh5UkRlWi00QnVzSFFTZGpOek4yU09EQmJRREUzbzBSbHQ4aV9RdzkyUG1UaHBpQW5yMkd1aTJfemFuTE5LQXBlbjRCRUM3QXNMSkhSNkd0V2N3YTJsR0lwd01QSmdFRl8zTWZNT21aVFdIcWRKaEFKVzl1Qmh1Yklvd29KRUx3cmFqbUZJQQ?oc=5",
+          "source_name": "Google News: AI agent enterprise workflow",
+          "channel": 3,
+          "published_at": "2026-04-02T00:02:17+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "2cb038b05cad",
+          "title": "Zenity Emphasizes Security Controls for Expanding Enterprise AI Agent Ecosystems - TipRanks",
+          "summary_ko": "Zenity가 기업의 AI 에이전트 생태계 확대에 대비한 보안 제어 기능을 강조하고 있습니다. 엔터프라이즈 환경에서 AI 에이전트의 자율적 작동 범위가 확대됨에 따라 보안 취약점이 증가하고 있어, 이를 관리하기 위한 통제 메커니즘이 중요해졌습니다. CEO와 투자자는 AI 시스템 도입 시 단순한 효율성뿐 아니라 보안 거버넌스를 필수 요건으로 포함시켜야 하며, 의료 IT 전문가를 포함한 규제 대상 산업의 의사결정자들은 컴플라이언스를 확보하면서 AI 기술을 활용할 수 있는 검증된 보안 솔루션 도입을 우선순위에 두어야 합니다.",
+          "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQZl9oVWVJMFBOZDJ6NTk1ZWFQTkdtMHNmNm1xY1kxd2drRjdqQkYzdG1PaUVCS0UtV2dVOGZoMERZYlBzZDE0ZHVZbzBtNG5lQUtHbmN6b09Bdjk3Z0haMzZ5MHJia0xGWHpERHlORENNZFYtbTJtNDMzeElwQ1dwaEVjWEdVU212M2Ztb19heEJiOFdlZnl4UEYwZDRFQm00a1ZUbTRqLWJ5dE5sU09fSWR5VWs1eS01NEwyWlJuVGxYUWlFTWYw?oc=5",
+          "source_name": "Google News: AI agent enterprise workflow",
+          "channel": 3,
+          "published_at": "2026-04-01T18:40:26+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "bb6b455d3f71",
+          "title": "Activating Data to Close the AI ROI Gap: 4 Steps to Realizing Business Value Through Agentic AI - Unite.AI",
+          "summary_ko": "# 요약\n\n에이전틱 AI를 통해 기업들이 AI 투자 수익(ROI) 격차를 줄이기 위해서는 데이터 활성화가 필수적이며, 이를 위한 4가지 단계가 제시되고 있습니다. 현재 많은 기업들이 AI 도입에 막대한 자금을 투자하고 있지만 실제 비즈니스 가치 창출에 실패하고 있는 상황에서, 데이터를 효과적으로 활용할 수 있는 에이전틱 AI는 그 해결책이 될 수 있습니다. CEO 및 투자자들은 단순 AI 기술 도입을 넘어 데이터 활성화 전략을 수립하고, IT 전문가들은 기업 데이터를 에이전틱 AI 시스템과 통합할 수 있는 아키텍처 구축에 집중해야 하며, 이를 통해 AI 투자의 실질적 비즈니스 가치 실현이 가능해질 것입니다.",
+          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOMUc5bC00UHl6VnpicTdxb0tUMFdGZ0EzQ1M1alAxUThEY05IVHhWcnpNVVB3TUxqcmJzNGlkUVZQbVRleXFjRUo4YTZUS3BybnFVbk1ySkU5TFA0dTZISXhzT21qUVU0RHVIYjVNaGVWWlQ0YTIyQ0V5VnVULS1GM2hDQXNBeUpzNUw5VVpPazVBOG1EMEVLWUlHWHFSdFFhRDVPRWhMaUZWVjdGeHBfck1IVzA5VGc?oc=5",
+          "source_name": "Google News: agentic AI business automation",
+          "channel": 3,
+          "published_at": "2026-04-01T18:36:43+00:00",
+          "section": "agentic-ai"
+        }
+      ]
+    },
     {
       "id": "epic-ai",
       "name": "EPIC AI",
       "description": "Epic Systems AI 전략 벤치마크, 국내외 의료 IT 혁신",
       "articles": [
         {
+          "id": "62e1de32c341",
+          "title": "25 Healthcare AI Use Cases with Examples - AIMultiple",
+          "summary_ko": "# 요약\n\n의료 분야의 25가지 AI 활용 사례들이 소개되었으며, 이는 진단, 치료 계획, 환자 관리, 행정 업무 자동화 등 의료 산업의 전반적인 영역에서 AI 기술이 실제로 어떻게 적용되고 있는지 보여줍니다. AI 기술은 의료 진단 정확도 향상, 치료 효율성 증대, 의료비 절감을 통해 의료 산업의 혁신을 주도하고 있어 매우 중요합니다. CEO와 투자자에게는 의료 AI 시장의 성장성과 구체적인 투자 기회를 제시하며, 의료 IT 전문가에게는 각 영역별 기술 도입 전략과 구현 방안을 수립하는 데 필요한 실무적 통찰력을 제공합니다.",
+          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE80ekdfUDFkSFd6azRmWHN4ekk4cFNlSEdIRF9LQmFzLW1Bb3pfeHYzODFqTXZ0TkE2NFZzYUV0TzlGTms5VjlYYUhXWGhrMUJUOTk5S3FHamdBQQ?oc=5",
+          "source_name": "Google News: digital health AI platform",
+          "channel": 3,
+          "published_at": "2026-04-04T10:01:18+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "733dd935ebfa",
+          "title": "Longtime HIE leader stays focused on interoperability",
+          "summary_ko": "오래된 보건정보교환(HIE) 리더가 상호운용성에 집중하고 있습니다. 해당 인물은 의료기관 간 데이터 공유의 표준화와 기술적 장애물 제거를 통해 환자 치료 결과 개선과 운영 효율성 증대를 추구하고 있으며, 이는 의료 IT 생태계에서 선도적 역할을 수행하고 있음을 시사합니다. CEO와 투자자들에게는 상호운용성 확보가 장기적 경쟁력 강화의 필수 요소임을, 의료 IT 전문가들에게는 표준 기반 솔루션 구축의 중요성을 강조하는 사례입니다.",
+          "url": "https://www.healthcareitnews.com/video/longtime-hie-leader-stays-focused-interoperability",
+          "source_name": "Healthcare IT News",
+          "channel": 2,
+          "published_at": "2026-04-03T20:27:35+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "906ceecb91fd",
+          "title": "Q&A: AWS on new AI agents, quantum computing in healthcare",
+          "summary_ko": "AWS는 AI 에이전트와 의료 분야의 양자컴퓨팅 활용에 대한 새로운 전략을 발표했습니다. 이는 기업들이 자동화된 의사결정과 복잡한 의료 데이터 분석에서 획기적인 진전을 이룰 수 있음을 의미하며, 클라우드 인프라의 중요성을 더욱 강화합니다. CEO와 투자자들은 AI와 양자컴퓨팅이 헬스케어 산업의 디지털 혁신을 주도할 핵심 기술임을 인식하고 이 분야 기업들의 성장성을 높이 평가해야 하며, 의료 IT 전문가들은 AWS의 새로운 도구들을 자신의 인프라에 통합하기 위한 준비를 시작해야 합니다.",
+          "url": "https://www.healthcareitnews.com/news/qa-aws-new-ai-agents-quantum-computing-healthcare",
+          "source_name": "Healthcare IT News",
+          "channel": 2,
+          "published_at": "2026-04-03T20:02:22+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "34d400c71f2b",
+          "title": "VA upshifts digital transformation efforts with new tech rollouts",
+          "summary_ko": "미국 재향군인청(VA)이 새로운 기술 도입을 통해 디지털 변환을 추진하고 있습니다. 전사적 예약 시스템(Enterprise Scheduling System)의 전국 확대로 지역사회 의료 예약이 급속도로 증가했고, 세일즈포스 기반의 AI 플랫폼 도입으로 업무 흐름이 자동화되어 행정 문제들을 빠르게 해결하고 있습니다. 이는 역사적인 행정 및 운영 과제를 극복하려는 VA의 구체적인 노력으로, 공공기관의 디지털 혁신 추진과 기술 도입의 중요성을 보여줍니다. 정부 기관의 시스템 현대화는 서비스 품질 향상과 운영 효율성 개선의 핵심 사례가 되어 의료 IT 투자 확대의 필요성을 강조합니다.",
+          "url": "https://www.healthcareitnews.com/news/va-upshifts-digital-transformation-efforts-new-tech-rollouts",
+          "source_name": "Healthcare IT News",
+          "channel": 2,
+          "published_at": "2026-04-03T16:53:58+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "55f180f2e915",
+          "title": "Just funded: Meet 6 new Sandbox startups poised to impact digital health, AI innovation - Startland News",
+          "summary_ko": "디지털 헬스케어와 AI 혁신 분야에서 새로운 기술을 개발하는 6개의 샌드박스 스타트업이 최근 펀딩을 확보했습니다. 이들 스타트업은 의료 AI, 원격진료, 건강데이터 분석 등을 통해 기존 의료 시스템을 혁신할 수 있는 잠재력을 보유하고 있습니다. CEO와 투자자들은 이러한 신생 기업들이 의료 산업의 효율성을 높이고 새로운 수익 창출 기회를 제시할 수 있다는 점에서 주목해야 하며, 의료 IT 전문가들은 이들 기술이 향후 의료 인프라의 표준이 될 가능성에 대비해야 합니다.",
+          "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9xQm1HZWpBNExINXJNWUJkUkEwZ1dxY19ITWVTRThtT1hwdUhJQ1lKLXJ5bUFheGJDWTd0cXhHZEtKUm5OdHcxUU9hcmFEYjUzd2YwS1pPOXgxX3FBQTJrUmpYTQ?oc=5",
+          "source_name": "Google News: digital health AI platform",
+          "channel": 3,
+          "published_at": "2026-04-03T16:29:56+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "72b26f3671cb",
+          "title": "MUSC Health uses AI analytics to gain OR scheduling efficiencies",
+          "summary_ko": "MUSC Health는 수술 수요 증가에 대응하기 위해 AI 분석 기술을 도입하여 수술실(OR) 스케줄링 효율성을 획기적으로 개선했습니다. 남캐롤라이나의 대형 의료 시스템인 MUSC Health는 높은 수술실 가동률로 인한 유연성 부족 문제를 해결하기 위해 인공지능 기반 분석 솔루션을 활용하여 수술 일정 최적화와 운영 효율성을 달성했습니다. 이는 의료기관 CEO와 투자자에게 AI 기술이 의료 운영 비용 절감과 수익성 향상의 핵심 도구임을 보여주며, 의료 IT 전문가에게는 수술실 관리, 리소스 배분, 환자 대기시간 개선 등에 AI 분석의 실질적 적용 방안을 제시합니다.",
+          "url": "https://www.healthcareitnews.com/news/musc-health-uses-ai-analytics-gain-or-scheduling-efficiencies",
+          "source_name": "Healthcare IT News",
+          "channel": 2,
+          "published_at": "2026-04-03T15:46:38+00:00",
+          "section": "epic-ai"
+        },
+        {
           "id": "d518f037aea0",
           "title": "Affordable healthcare: Firm launches integrated AI-powered telemedicine platform to address medical challenges - Blueprint Newspapers",
-          "summary_ko": "한 기업이 의료 접근성 개선을 위해 AI 기반 통합 원격진료 플랫폼을 출시했습니다. 이 플랫폼은 의료비 부담을 줄이고 의료 서비스 접근성을 높이는 것을 목표로 하며, AI 기술을 활용해 진단 보조 및 환자 관리를 효율화합니다. 이는 의료 IT 시장의 성장 기회를 보여주며, CEO와 투자자들에게는 디지털 헬스케어 분야의 수익성 있는 비즈니스 모델 구축 가능성을, 의료 전문가들에게는 기술을 통한 의료 질 향상과 운영 효율성 개선의 기회를 시사합니다.",
+          "summary_ko": "# 기사 요약\n\n한 기업이 의료 접근성 문제를 해결하기 위해 AI 기반의 통합 원격의료 플랫폼을 출시했다. 이 플랫폼은 인공지능 기술을 활용하여 의료 서비스의 효율성을 높이고 환자들이 저렴하게 의료 서비스를 받을 수 있도록 설계되었다. AI 기반 원격의료는 의료비 부담을 줄이고 의료 접근성을 확대하는 동시에, 진단 정확도 향상과 운영 비용 절감으로 의료 산업의 혁신을 주도할 수 있어 중요하다. CEO와 투자자들은 원격의료와 AI 결합이 헬스케어 시장의 새로운 성장 기회이며, 의료 IT 전문가들은 기술 표준화와 데이터 보안을 중심으로 한 전략 개발이 필수적임을 인식해야 한다.",
           "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQMGhqSTF4N1puMTB1X1dQY0xvOXEzT0VqTWZnaExEeGhfbGozemc5ZmFZU3J0ck1GSGFBZlFEc2NZdnFBZWtSVFNpdVNOLU1NeUZNdllXaGVKTDFZbTJxZm1ZRXVadkpXUjlSY0VaclNHNmY3U3hjT2JJczNiVktPeXhGQlFIQllvNFA5dzFOeHJvbUpUYlFQdFltZ3VvcnhnNk9zYllMeWQ1NXZkYVVfVWVpWHZSZnQ1TDRQR2I2NnpsOXJxTldjdHNfbw?oc=5",
           "source_name": "Google News: digital health AI platform",
           "channel": 3,
           "published_at": "2026-04-03T15:30:53+00:00",
           "section": "epic-ai"
+        },
+        {
+          "id": "74168ff90fe8",
+          "title": "비바이노베이션, 의료특화 생성형 AI ‘Dr.Patch’ 인허가 절차 착수 - 지이코노미",
+          "summary_ko": "의료 AI 기업 비바이노베이션이 자체 개발한 의료 특화 생성형 AI 'Dr.Patch'의 인허가 절차를 시작했습니다. 이는 국내 의료용 생성형 AI의 규제 승인 사례가 아직 많지 않은 상황에서 의료 AI 산업의 제도화를 앞당기는 중요한 움직임입니다. CEO와 투자자들에게는 규제 선점 기업으로서의 브랜드 가치 상승과 향후 의료 AI 시장 확대 가능성을 시사하며, 의료 IT 전문가들에게는 임상 데이터 기반의 신뢰도 높은 AI 개발 및 검증 프로세스 확립의 필요성을 강조합니다.",
+          "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9Ic1A0b2xGMXB0SkRKdzJoUmtmX3hneWxWNXR6bXNQQUlpWk9LdGJ3TnhvRWh0MElMVXhfcXlBcmdxQ0o0SEdGekJ6aTh4NDlESDNwWDhqRlJoWTVPTzN5cDAzMkM?oc=5",
+          "source_name": "Google News: 의료 AI 병원",
+          "channel": 3,
+          "published_at": "2026-04-03T08:01:14+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "589d80b1863d",
+          "title": "AI Tracker: Ambience Healthcare launches AI tool for nurses - Modern Healthcare",
+          "summary_ko": "# 요약\n\nAmbience Healthcare가 간호사를 위한 AI 도구를 출시했으며, 이는 의료 현장에서 간호사의 업무 효율성을 대폭 향상시킬 수 있는 혁신적 솔루션입니다. 이 AI 도구는 의료 기관의 운영 비용 절감과 간호사의 근무 부담 감소를 통해 환자 진료 품질 개선에 기여할 것으로 기대됩니다. 의료 IT 투자자와 병원 운영진에게는 간호 업무 자동화의 새로운 시장 기회를 의미하며, 의료 IT 전문가에게는 임상 워크플로우 개선을 위한 AI 적용 사례로서 중요한 벤치마크가 될 것입니다.",
+          "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOSEJfOGFQa0d4TW9ONGVxSWx1NkRVQm5WUThYdkZmRWJ4cG5GNGtDMXlSUVh5dlo5YWoyeDJSdEo2SVg4M19GTk5XcEttbE8zV1FEMS11V1BJTU1OdWFEOGpMZThPVVBRXzRxZGdlbTVaQ29zR0JtQzZiRDBOQld6Um9mTlRzdTVwZW4wSWJEOA?oc=5",
+          "source_name": "Google News: digital health AI platform",
+          "channel": 3,
+          "published_at": "2026-04-03T04:17:17+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "239fcccb6829",
+          "title": "아이넥스, 국공립병원 4곳에 내시경 AI ENAD 공급 확대 - 더퍼블릭",
+          "summary_ko": "아이넥스가 국공립병원 4곳에 내시경 AI 솔루션 'ENAD'를 공급하는 방식으로 사업을 확대했다. 이는 의료 AI 기술이 국공립 의료기관에서도 신뢰할 수 있는 솔루션으로 인정받기 시작했음을 의미하며, 공공의료 시스템에 AI 기술 도입이 가속화되고 있음을 보여준다. 기업 입장에서는 공공 영역으로의 진출을 통해 시장 신뢰도를 강화하고 안정적인 B2B 고객층을 확보할 수 있으며, 투자자는 의료 AI의 제도적 수용 확대와 향후 성장성을 긍정적으로 평가할 수 있다.",
+          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1JN0Q3WGJoRXRiQVpHc0hhVlRFc2twOEpWdlhlcGxvalF3Y2gxSWJuU3A0TEVHRTJOSU01aGNvR2RPRDg2VE5rSk83S0I5dlYxV3NmQktONVczNEEwMmdJZndDdG9RdHZDMV9R0gFvQVVfeXFMTzBYSlo5YUZIUjNfbWlRd0dVUU93Mml5TG1ybktmbUg3bWFkanNQUFdzMjdEbG1aQ0lxYl8zOHlXakpveko1Y0gzWW1EZ1pqZ0lqaFlPMzN3NW9zcUxNWk5lckpnOEhzSG9ORjVWZnlr?oc=5",
+          "source_name": "Google News: 의료 AI 병원",
+          "channel": 3,
+          "published_at": "2026-04-03T02:26:07+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "0b30f8937310",
+          "title": "서울성심병원-대웅제약, AI 모니터링 '씽크' 도입 - 헬스미디어뉴스",
+          "summary_ko": "서울성심병원과 대웅제약이 AI 기반 원격 환자 모니터링 솔루션 '씽크'를 도입했습니다. 이는 퇴원 후 환자의 건강 상태를 실시간으로 추적하여 재입원을 예방하고 의료 서비스 질을 향상시키는 디지털 헬스케어 사례입니다. CEO와 투자자들은 AI 기술을 통한 만성질환 관리 효율화와 새로운 의료 사업 모델 확보 기회를, 의료 IT 전문가들은 병원-제약사의 협력 모델과 원격 의료 기술의 임상 확산 추세를 주목할 필요가 있습니다.",
+          "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBIUXI0YW5tSDh4UTFXeFI3MjdZaWJoZVB0QVBHOXByZV9DakJ4MGFKcGlqWkwwZmFiMFRGdzRyWU1ZdGx0eURlSF9TaGR1VUhSV1NSaWdqVkFyTUp5R1hGMnp6Zjd5QUhoUDVFODdlZllRUQ?oc=5",
+          "source_name": "Google News: 의료 AI 병원",
+          "channel": 3,
+          "published_at": "2026-04-03T00:34:26+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "dc20e7f361b7",
+          "title": "아이넥스코퍼레이션 AI 진단보조 소프트웨어 ENAD,국내 주요 국공립병원 4곳 공급 - 데일리경제",
+          "summary_ko": "아이넥스코퍼레이션의 AI 진단보조 소프트웨어 'ENAD'가 국내 주요 국공립병원 4곳에 공급되기로 결정됐습니다. 이는 국내 AI 의료기기가 공공의료 시장에 본격 진출하는 의미있는 사례로, 의료 현장의 진단 정확도 향상과 의료진의 업무 효율성 개선을 기대할 수 있습니다. 투자자들에게는 한국 AI 의료기업의 기술 경쟁력 입증과 향후 수출 기반 마련을 보여주는 긍정적 신호이며, 의료 IT 전문가들에게는 AI 기반 진단보조 솔루션이 국내 의료시스템에 실질적으로 통합되는 과정을 시사합니다.",
+          "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFAxbWE5S0xNWVp4QjRuV3ljbXIzZUc3YkZ1M1ZPYU9rSVJWVmE4QlBIUi1YRDBZdTR4SFgtTjQ0YWNraHhLVzJsZjhYMHhTcU5JYlJpRWVFU1h4bjhWdVFBTzFWd0RsdGFhNE94TQ?oc=5",
+          "source_name": "Google News: 의료 AI 병원",
+          "channel": 3,
+          "published_at": "2026-04-03T00:28:23+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "9870487591b7",
+          "title": "Jimini Health raises $17M to expand AI behavioral health platform - MobiHealthNews",
+          "summary_ko": "Jimini Health가 AI 기반 행동 건강 플랫폼 확장을 위해 1,700만 달러 펀딩을 확보했습니다. 이는 정신 건강과 약물 남용 치료 분야에서 AI 기술의 활용이 빠르게 증가하고 있음을 보여주며, 특히 치료 접근성 확대와 개인화된 치료 제공의 중요성이 강조되고 있습니다. CEO와 투자자들은 디지털 치료 시장의 성장 잠재력에 주목해야 하며, 의료 IT 전문가들은 AI 기반 행동 건강 솔루션의 임상적 유효성과 규제 준수 전략을 면밀히 검토할 필요가 있습니다.",
+          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQZUlnTVEyZWN3SHVrMU5OcEpUTGdYWEZUMTFjeV9zM1V6U3pFQlR2d1R4c3dDOVQ5ekdvelJZTEZwYXp1RlJwelhNM0ljQmwyZjUwdHR1Zjk3ckQ3bGtMeDhiaDhlYm40MGRQTlphTzBZWU1wWkdtcEVzTDhZTjY5akZzdE5QUjJSYkpmZHJkYWlMeE5jdHBpR3RPUHROZw?oc=5",
+          "source_name": "Google News: digital health AI platform",
+          "channel": 3,
+          "published_at": "2026-04-02T16:52:18+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "1b4e21bc504c",
+          "title": "Landmark Study of 20,000 Users Provides Peer-Reviewed Proof: InsideTracker's AI Health Platform Linked to Significant, Sustained Health Biomarker Improvements - PR Newswire",
+          "summary_ko": "InsideTracker의 AI 건강 플랫폼이 2만 명의 사용자를 대상으로 한 대규모 연구를 통해 건강 바이오마커의 지속적인 개선과 연관성이 있다는 동료 검증 논문으로 증명되었습니다. 이 연구 결과는 개인화된 AI 기반 헬스케어 솔루션의 효과성을 과학적으로 입증하는 중요한 이정표로, 의료 IT 분야에서 데이터 기반 예방 건강관리의 신뢰성을 높입니다. CEO와 투자자들에게는 AI 건강 플랫폼의 임상적 검증이 시장 확대와 규제 승인의 가능성을 높이며, 의료 IT 전문가들에게는 개인화된 바이오마커 추적 기술의 실질적 가치를 입증하는 중요한 근거를 제시합니다.",
+          "url": "https://news.google.com/rss/articles/CBMitgJBVV95cUxOTEZ0bEJuclVFZFNsRkpqdFJYUkJFd1V2bGJ0cG1Bc1Y0MExFelB4UjNYMmc2ZDhQbFZQSmpEXzR1QWZob0V4RmNUa3A3QXlTdkZMSVpHUkFEemdLMExCUXk1SWxYVjlUeGRYVEY0MFdMQ0VCRTlRLXR0WWdScF9RRXFGTTlpUzY2a0ZOckN0S3VLTE9nY1pPd0RRTHZjeFZJeVB2Y2lZaG9FNW1aY1BkcGZGdm1rRldFMHIxZTgxZkNteWxnZUFTdVJYRkd3TGJuY3JrN0VkbGNidGN3WjUwR2hmczN2WVpmSkZHbWdrQ1JXSkxuYm1ZNVkzRFE5OVkwNmdEQkRXemFZdVlrQU8tbEpHR1BwSXA0R000LUFOdng2ZEx6a05IUXVPQ1ljNEEwa011cVh3?oc=5",
+          "source_name": "Google News: digital health AI platform",
+          "channel": 3,
+          "published_at": "2026-04-02T13:03:00+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "0ff5e80d78a4",
+          "title": "덴탈비서, EMR 기반 AI 경영 솔루션 출시...치과 수익 지원 - 스포탈코리아",
+          "summary_ko": "덴탈비서가 EMR(의료기록) 데이터를 활용한 AI 기반 치과 경영 솔루션을 출시했습니다. 이 솔루션은 진료 데이터를 분석하여 치과의 수익성 개선과 효율적인 경영을 지원하는 것이 핵심입니다. 의료 AI 시장이 확대되는 가운데 치과 산업에도 본격적인 디지털 혁신이 진행되고 있으며, CEO와 투자자에게는 의료 IT 시장의 새로운 수익 기회가 열리고 있음을 보여줍니다.",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPWWEwb054ZVVGbW9tR3U1U2RiTG5CUnV4TDRoc05OQTlqNjJUUHZqX283V19JVDF2RlRGMkVDOGR4OFU1TFdmeUNvYXFnbXVoeVZDX3ZUVHBJRC1GNER4VklBQ1JpTkFMQkNGeUpKQURNd0ZSSV82MjJSMVdBWHkyUGdB?oc=5",
+          "source_name": "Google News: EMR AI 한국",
+          "channel": 3,
+          "published_at": "2026-04-02T08:56:20+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "f33edbe9ee84",
+          "title": "갈렙앤컴퍼니 등 3개사 'AI 의료 혁신' 업무협약 - 연합뉴스",
+          "summary_ko": "갈렙앤컴퍼니를 비롯한 3개 기업이 AI 기반 의료 혁신을 추진하기 위해 업무협약을 체결했습니다. 이는 의료 AI 분야의 기술 고도화와 신약 개발, 진단 효율화 등을 통해 의료산업의 디지털 전환을 앞당기는 데 의의가 있습니다. CEO와 투자자들은 의료 AI 시장의 성장 가능성에 주목할 필요가 있으며, 의료 IT 전문가들은 각 기업의 AI 기술 역량과 협업 전략이 향후 의료 혁신의 핵심 경쟁력이 될 것으로 판단해야 합니다.",
+          "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5yNnd3a21pSDFUUFQxN1huSnFrSzgxNHdVWVZKaVBTYnYyN2xGQVRrNTYtejRSU2Y4LVg3UXF3V1h3NWFXbGdPT0lqeWFwS2VWc2FiUU9HaUtULUXSAWBBVV95cUxPUFQwUXJjVm0tUVFLNUpUa1ZyaVhhbGxrTXBuWEhxTG9fNWNwbUZHS2ZSQ2tGUjd3Qm5UQThIb0hUdTVtbHJ5OHcyRmtpbHA3clJsVEs2WHc5WXN6cmI4cVg?oc=5",
+          "source_name": "Google News: 의료 AI 병원",
+          "channel": 3,
+          "published_at": "2026-04-02T07:21:49+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "d54c40bb242b",
+          "title": "Fierce Healthcare Fundraising Tracker '26: Autism VC AIF closes second fund; Doctronic picks up $40M - Fierce Healthcare",
+          "summary_ko": "자폐증 관련 벤처캐피탈펀드인 Autism VC AIF가 2번째 펀드를 마감했으며, 의료 기술 기업 Doctronic이 4천만 달러 규모의 펀드레이징에 성공했다. 이는 의료 AI 및 자폐증 치료 분야에 대한 벤처캐피탈의 관심이 지속적으로 증가하고 있음을 보여준다. 기업 리더와 투자자들에게는 의료 혁신 분야, 특히 미충족 의료 수요가 있는 영역에 전략적 투자의 기회가 확대되고 있음을 시사한다.",
+          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQaFJTdWtYZzBuMHVULWhJWFV3dVB3d0NfeEE1V0RMcV82Z2VFZ2ZtV2x2ZDBYTG1ZUnQ1RGFsZ0pFWmNFZW1rczNCOFRDUjFCTlFvUEplLVFuZmpHRVpfS2pZX3M1ZjZDaFUzZVV3QURjclpScmZlVndpaWlaN3hBNU11dWRpMkxmamp5ZXhR?oc=5",
+          "source_name": "Google News: digital health AI platform",
+          "channel": 3,
+          "published_at": "2026-04-02T07:00:00+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "d9c8d62f0490",
+          "title": "\"AI가 암이래요\"… 진료실 뒤흔든 챗GPT에 의사들 '위험' 경고 - kmjournal.net",
+          "summary_ko": "챗GPT 등 생성형 AI가 의료 진료 현장에서 오진 정보를 제공하면서 의료진과 환자 간 혼란을 야기하고 있습니다. 의사들은 AI가 그럴듯하지만 부정확한 진단 정보를 생성할 수 있어 환자 안전에 직결되는 의료 분야에서 매우 위험하다고 경고하고 있습니다. 이는 의료 AI 도입 시 정확성 검증과 규제 기준의 필요성을 강조하며, 기업들은 의료 분야 AI 개발 시 임상적 근거와 안전성 확보를 필수적으로 갖춰야 하고, 투자자들은 의료 AI 기업의 검증 수준과 규제 준수 역량을 투자 판단 기준으로 삼아야 함을 시사합니다.",
+          "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1rQWI0b3FJY25CVDZxYXR5WldZSkJQcjJHMUlCeGFMTlRaeEJsaThnWWI4NG5rMjJ6OG9IemZoS0V5SURzNFAyUmRGOWp2bG40ZG9qWjBPYmZzMjFzdU9kMjVDb2VmbGxPbVE?oc=5",
+          "source_name": "Google News: 의료 AI 병원",
+          "channel": 3,
+          "published_at": "2026-04-02T05:19:36+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "037485864923",
+          "title": "[2026년 1분기 병원경영 트렌드 리포트] 수가 재편, 가치기반 지불, 의료 AI 내재화의 시작 - 코리아비즈니스리뷰",
+          "summary_ko": "# 2026년 1분기 병원경영 트렌드 요약\n\n2026년 1분기 의료 산업은 수가 체계 재편, 가치기반 지불제 도입, 의료 AI 내재화라는 세 가지 주요 변화를 맞이하고 있습니다. 이러한 변화는 기존의 행위기반 수가 모델에서 환자 치료 결과 중심으로의 패러다임 전환을 의미하며, 의료기관의 운영 효율성과 의료 서비스 품질이 동시에 평가받게 됩니다. 병원 경영진과 투자자는 AI 기반 진단·예측 시스템 도입을 통한 경쟁력 강화와 비용 최적화에 집중해야 하며, 의료 IT 전문가는 데이터 기반 의사결정 시스템 구축과 규제 환경 변화에 대비한 통합 솔루션 개발이 시급한 상황입니다.",
+          "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5JQTNoQW1xU2d1eGJaM1dsR2lYX2hPWFlvbXFqQXZNZXNrZnV4ZUlqMXFaQ01tMktQbWtDeUlXMTFLYmhfaF9ONnBvYzdxemFpTUxzVmJIOGRFX0phdm5ZM0MwMkE0eXJoNUxxNi1STQ?oc=5",
+          "source_name": "Google News: 의료 AI 병원",
+          "channel": 3,
+          "published_at": "2026-04-02T02:33:57+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "51cfe481b6ab",
+          "title": "\"의료 에이전틱 AI 복잡한 의료 노동 환경도 바꿀 것\" - 메디칼타임즈",
+          "summary_ko": "의료 에이전틱 AI가 의료 현장의 복잡한 노동 환경을 근본적으로 변화시킬 것으로 예상된다. 에이전틱 AI는 자율적으로 의사결정하고 행동할 수 있어 의료진의 행정업무 부담을 경감하고 진료 효율성을 높일 수 있다. CEO와 의료 IT 투자자는 의료 AI 시장의 성장 기회를 주목해야 하며, 의료기관 리더는 AI 도입 전략 수립과 의료진 교육을 통해 업무 혁신에 선제적으로 대응할 필요가 있다.",
+          "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE0ycThyblZ5bjh0VU82TnZGeENCeVlodG5YSWdPLXY0YXRhT0k5SElmYXpKX0djZkNKX25GSGpuU2pjNWt0cFpxVU54d2NXdDBzOFNOUUZvaUw3eEpBaGprNUIzWmowQ1FBcW1uVWtMZDU?oc=5",
+          "source_name": "Google News: 의료 AI 병원",
+          "channel": 3,
+          "published_at": "2026-04-01T20:30:00+00:00",
+          "section": "epic-ai"
+        }
+      ]
+    },
+    {
+      "id": "financial-macro",
+      "name": "Financial Macro",
+      "description": "S&P500·Nasdaq·미국 장기채 관련 매크로 동향 및 자산배분 인사이트",
+      "articles": [
+        {
+          "id": "231f95e65995",
+          "title": "These charts show the cracks in the stock market are widening",
+          "summary_ko": "# 요약\n\n미국 S&P 500의 기술적 지표들이 악화되고 있으며, 주식시장의 균열이 심해지고 있는 것으로 나타났습니다. 이는 시장 내 광범위한 약세와 투자자 심리 악화를 시사하며, 기업의 주가 변동성 증가와 투자 심리 위축으로 이어질 수 있습니다. CEO와 투자자들은 포트폴리오 재점검과 리스크 관리 강화가 필요하며, 의료 IT 기업들도 시장 불안정성에 대비한 자본 효율성 재검토가 시급합니다.",
+          "url": "https://www.marketwatch.com/story/these-charts-show-the-cracks-in-the-stock-market-are-widening-9ee6a281?mod=mw_rss_topstories",
+          "source_name": "MarketWatch Top Stories",
+          "channel": 2,
+          "published_at": "2026-04-04T13:24:00+00:00",
+          "section": "financial-macro"
+        },
+        {
+          "id": "6ed9a47f00d1",
+          "title": "Some central banks have been selling their gold. That doesn’t mean you should too.",
+          "summary_ko": "금값이 13년 만에 최대 낙폭을 기록했고 일부 중앙은행들이 금 매입에서 매각으로 전환했지만, 이는 오히려 금이 투자자들에게 그 어느 때보다 가치 있는 자산임을 입증한다. 중앙은행의 금 매각은 단기적 가격 변동을 반영할 수 있지만, 금의 장기적 가치는 인플레이션 방어와 포트폴리오 다각화라는 본질적 역할에 의해 결정된다. CEO와 투자자들은 중앙은행의 단기 거래 움직임에 흔들리지 말고, 개별 투자 포트폴리오에서 금의 전략적 위치를 중장기 관점에서 재평가해야 한다. 특히 경제 불확실성과 통화 정책 변화 속에서 금은 여전히 위험 자산의 헤지 수단으로서의 중요성을 유지하고 있다.",
+          "url": "https://www.marketwatch.com/story/some-central-banks-have-been-selling-their-gold-that-doesnt-mean-you-should-too-d544ba1c?mod=mw_rss_topstories",
+          "source_name": "MarketWatch Top Stories",
+          "channel": 2,
+          "published_at": "2026-04-04T13:00:00+00:00",
+          "section": "financial-macro"
+        },
+        {
+          "id": "3331fb3f75bb",
+          "title": "There’s a new ETF for memory stocks. History suggests that might be an ominous sign.",
+          "summary_ko": "# 기사 요약\n\n메모리 칩 관련 주식에 투자하는 신규 상장지수펀드(ETF)가 출시되었으나, 시장 전문가들은 이를 부정적인 신호로 해석하고 있습니다. 역사적으로 특정 산업군에 대한 신규 ETF 출시는 해당 업종이 과열 상태에 접어들었음을 의미하며, 이는 가격 조정이 임박했을 가능성을 시사합니다. CEO와 투자자들에게는 메모리 칩 관련 주식 매수를 신중하게 검토하고 기존 보유 자산의 매도를 고려할 필요가 있으며, 의료 IT 전문가들에게는 반도체 공급망 수급 상황의 변동성을 모니터링할 필요가 있음을 시사합니다.",
+          "url": "https://www.marketwatch.com/story/theres-a-new-etf-for-memory-stocks-history-suggests-that-might-be-an-ominous-sign-44573f52?mod=mw_rss_topstories",
+          "source_name": "MarketWatch Top Stories",
+          "channel": 2,
+          "published_at": "2026-04-04T12:00:00+00:00",
+          "section": "financial-macro"
+        },
+        {
+          "id": "8e00ecc3ecab",
+          "title": "My wife and I buy promotional CDs with our tax-refund check. Is now a bad time to switch to Treasurys?",
+          "summary_ko": "부부가 세금환급금으로 프로모션 CD(양도성예금증)를 구매하고 있으며, 국채(Treasury)로 전환할 시기에 대해 문의하고 있습니다. 현재 높은 금리 환경에서 국채는 CD 대비 유사하거나 더 나은 수익률을 제공할 수 있으며, 국채는 정부 보증으로 안전성이 높고 유동성이 우수하다는 장점이 있습니다. 투자자들은 CD와 국채의 만기, 세금 처리, 유동성 요구사항을 비교 검토하여 자신의 재정 목표에 맞는 선택을 할 수 있으며, 현재의 금리 수준이 높은 시기이므로 다양한 보수적 투자 옵션을 탐색할 좋은 기회입니다.",
+          "url": "https://www.marketwatch.com/story/my-wife-and-i-buy-promotional-cds-with-our-tax-refund-check-is-now-a-bad-time-to-switch-to-treasurys-e19841aa?mod=mw_rss_topstories",
+          "source_name": "MarketWatch Top Stories",
+          "channel": 2,
+          "published_at": "2026-04-03T21:20:00+00:00",
+          "section": "financial-macro"
+        },
+        {
+          "id": "bf8a33e0321e",
+          "title": "10-Year T-Note Futures Overview - CME Group",
+          "summary_ko": "# 요약\n\nCME Group의 10년물 미국 국채 선물은 금리 변동성이 큰 현재 글로벌 경제 환경에서 포트폴리오 위험 관리와 금리 노출 조정을 위한 핵심 헤징 도구로 기능하고 있습니다. 이 상품은 높은 유동성과 투명한 가격 발견 메커니즘을 제공하므로, 기업과 투자자들이 금리 리스크를 효율적으로 관리하고 고정 수익 시장에 투자할 수 있게 합니다. CEO 및 재무 의사결정권자는 금리 상승/하락에 따른 채권 포트폴리오의 민감도를 분석하여 선물로 체계적인 위험 관리 전략을 수립할 필요가 있으며, 이는 기업의 자금 조달 비용 최적화와 주주가치 보호에 직결됩니다.",
+          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOU0dhTUlyTGRKRC1uOUNFekh6RDRQT0w4Z2xUMUFLUDFDUXd5LWZfUUprc2hDN0oxWHQ5SkNESDZ1M0pfYnI4cXVuUnpFaG1wUExUN3UzMThnNXJaSWRWWEkteV8yRmFmMWcyOHNzQVd1WXB6VGJDZ04zYnk0Sm9JX0NUY0JwVmkyU2xpTHo0ZVlzNUk?oc=5",
+          "source_name": "Google News: Federal Reserve interest rate yield curv",
+          "channel": 3,
+          "published_at": "2026-04-02T04:49:15+00:00",
+          "section": "financial-macro"
+        },
+        {
+          "id": "a3e23f17f22d",
+          "title": "Newell Brands: Likely A Value Trap Amid Macro Uncertainties (NASDAQ:NWL) - Seeking Alpha",
+          "summary_ko": "뉴웰 브랜즈(NWL)가 거시경제 불확실성 속에서 저가 함정(value trap)일 가능성이 높다는 분석이 제시되고 있습니다. 이는 주가가 저평가되어 보이지만 실제로는 수익성 악화와 경제 둔화로 인한 근본적 문제가 있을 수 있음을 의미하며, 기업의 실적 개선 전망이 불투명함을 나타냅니다. 투자자들은 저가주의 매력만으로 판단하기보다 거시경제 환경 악화와 소비 심화에 따른 실질적 실적 부진 리스크를 신중히 평가해야 하며, 기업이 채무 부담 감소와 현금흐름 개선에 성공하기 전까지는 투자 신중을 기해야 합니다.",
+          "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPSlFYd2lpQzQ5TXhOOGl1YVhZamFtN0JIWWJVemtpR3A4UFRRcGl0VXJhUUJmLTh4RnJzdFhMZnlUaTRKbWJGRm9YaExabFRYZThIcDEwUnBQMmNwdDBmQXcwUnRCMTl2M1R1bEpKV1dMZ0lYWXJROVlyVUdkN3hXTkZPNVNQV1NtUmJNZXhjekZSVUU3Zmp6cjJpNDBmTktx?oc=5",
+          "source_name": "Google News: Nasdaq valuation earnings macro",
+          "channel": 3,
+          "published_at": "2026-04-01T23:24:41+00:00",
+          "section": "financial-macro"
         }
       ]
     }
