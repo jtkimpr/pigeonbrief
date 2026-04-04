@@ -12,19 +12,20 @@ channel2_rss:
     - name: "STAT News"
       url: "https://www.statnews.com/feed/"
     - name: "Modern Healthcare"
-      url: "https://www.modernhealthcare.com/rss/news.rss"
+      url: "https://www.modernhealthcare.com/arc/outboundfeeds/rss/"
     - name: "히트뉴스"
       url: "https://www.hitnews.co.kr/rss/allArticle.xml"
-    - name: "메디게이트"
-      url: "https://www.medigatenews.com/rss/allArticle.xml"
-    - name: "데일리메디"
-      url: "https://www.dailymedi.com/rss/allArticle.xml"
+    - name: "청년의사"
+      url: "https://www.docdocdoc.co.kr/rss/allArticle.xml"
+    - name: "의학신문"
+      url: "https://www.bosa.co.kr/rss/allArticle.xml"
 
 channel3_keywords:
+  max_age_hours: 72
   queries:
-    - 'Epic Systems AND (AI OR agent OR "machine learning")'
-    - 'EHR AND (AI OR automation) AND hospital'
-    - '"digital health" AND (AI OR platform) AND (revenue OR growth)'
-    - '유비케어 OR "GC메디아이"'
-    - 'EMR AND AI AND 한국'
-    - '의료 AI AND (병원 OR 클리닉)'
+    - "Epic Systems AI agent"
+    - "EHR AI automation hospital"
+    - "digital health AI platform"
+    - "유비케어 GC메디아이"
+    - "EMR AI 한국"
+    - "의료 AI 병원"

@@ -32,3 +32,4 @@ venv/
 .idea/
 *.swp
 *.swo
+.venv/

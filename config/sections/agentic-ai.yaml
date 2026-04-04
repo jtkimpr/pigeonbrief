@@ -10,17 +10,16 @@ channel1_feedly_opml:
 channel2_rss:
   sources:
     - name: "VentureBeat AI"
-      url: "https://venturebeat.com/category/ai/feed/"
-    - name: "Harvard Business Review"
-      url: "https://hbr.org/topics/ai/feed"
+      url: "https://venturebeat.com/feed/"
     - name: "MIT Technology Review"
       url: "https://www.technologyreview.com/feed/"
     - name: "인공지능신문"
       url: "https://www.aitimes.kr/rss/allArticle.xml"
 
 channel3_keywords:
+  max_age_hours: 72
   queries:
-    - '"AI agent" AND (enterprise OR workflow OR productivity)'
-    - '"agentic AI" AND business'
-    - 'LLM AND (copilot OR automation) AND workplace'
-    - 'AI 에이전트 AND (업무 OR 도입 OR 생산성)'
+    - "AI agent enterprise workflow"
+    - "agentic AI business automation"
+    - "LLM copilot workplace productivity"
+    - "AI 에이전트 업무 도입 생산성"
