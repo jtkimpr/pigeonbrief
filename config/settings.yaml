@@ -11,9 +11,9 @@ dedup:
   title_similarity_threshold: 0.85  # 제목 유사도 기준
 
 claude:
-  model: claude-sonnet-4-5
-  max_input_tokens: 1000     # 기사 본문 truncate 기준
-  batch_size: 10             # 1차 필터링 배치 크기
+  model: claude-haiku-4-5-20251001  # 요약 모델 (품질 원하면 claude-sonnet-4-6으로 변경)
+  max_input_tokens: 1000            # 기사 본문 truncate 기준
+  min_relevance_score: 0.6          # 필터링 최소 관련성 점수
 
 site:
   website_dir: website
