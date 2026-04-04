@@ -1,0 +1,26 @@
+id: agentic-ai
+name: "Agentic AI"
+description: "기업용 AI 에이전트 트렌드 및 도입 사례"
+enabled: true
+
+channel1_feedly_opml:
+  folder: "Agentic AI"
+  opml_file: config/feedly.opml
+
+channel2_rss:
+  sources:
+    - name: "VentureBeat AI"
+      url: "https://venturebeat.com/category/ai/feed/"
+    - name: "Harvard Business Review"
+      url: "https://hbr.org/topics/ai/feed"
+    - name: "MIT Technology Review"
+      url: "https://www.technologyreview.com/feed/"
+    - name: "인공지능신문"
+      url: "https://www.aitimes.kr/rss/allArticle.xml"
+
+channel3_keywords:
+  queries:
+    - '"AI agent" AND (enterprise OR workflow OR productivity)'
+    - '"agentic AI" AND business'
+    - 'LLM AND (copilot OR automation) AND workplace'
+    - 'AI 에이전트 AND (업무 OR 도입 OR 생산성)'

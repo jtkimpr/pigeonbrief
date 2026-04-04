@@ -1,0 +1,30 @@
+id: epic-ai
+name: "EPIC AI"
+description: "Epic Systems AI 전략 벤치마크, 국내외 의료 IT 혁신"
+enabled: true
+
+channel1_feedly_opml:
+  folder: "EPIC AI"
+  opml_file: config/feedly.opml
+
+channel2_rss:
+  sources:
+    - name: "STAT News"
+      url: "https://www.statnews.com/feed/"
+    - name: "Modern Healthcare"
+      url: "https://www.modernhealthcare.com/rss/news.rss"
+    - name: "히트뉴스"
+      url: "https://www.hitnews.co.kr/rss/allArticle.xml"
+    - name: "메디게이트"
+      url: "https://www.medigatenews.com/rss/allArticle.xml"
+    - name: "데일리메디"
+      url: "https://www.dailymedi.com/rss/allArticle.xml"
+
+channel3_keywords:
+  queries:
+    - 'Epic Systems AND (AI OR agent OR "machine learning")'
+    - 'EHR AND (AI OR automation) AND hospital'
+    - '"digital health" AND (AI OR platform) AND (revenue OR growth)'
+    - '유비케어 OR "GC메디아이"'
+    - 'EMR AND AI AND 한국'
+    - '의료 AI AND (병원 OR 클리닉)'

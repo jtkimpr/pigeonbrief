@@ -1,0 +1,28 @@
+id: financial-macro
+name: "Financial Macro"
+description: "S&P500·Nasdaq·미국 장기채 관련 매크로 동향 및 자산배분 인사이트"
+enabled: true
+
+channel1_feedly_opml:
+  folder: "Financial Macro"
+  opml_file: config/feedly.opml
+
+channel2_rss:
+  sources:
+    - name: "Calculated Risk"
+      url: "https://calculatedriskblog.com/feeds/posts/default"
+    - name: "A Wealth of Common Sense"
+      url: "https://awealthofcommonsense.com/feed/"
+    - name: "The Irrelevant Investor"
+      url: "https://theirrelevantinvestor.com/feed/"
+    - name: "Epsilon Theory"
+      url: "https://www.epsilontheory.com/feed/"
+    - name: "The Big Picture"
+      url: "https://ritholtz.com/feed/"
+
+channel3_keywords:
+  queries:
+    - 'Federal Reserve AND (rate OR "interest rate" OR "yield curve")'
+    - '"S&P 500" AND (recession OR "soft landing" OR outlook)'
+    - '("long-term bonds" OR TLT OR VGLT) AND yield'
+    - 'Nasdaq AND (valuation OR earnings OR macro)'

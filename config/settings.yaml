@@ -1,0 +1,24 @@
+# 전역 설정
+python_bin: /usr/local/bin/python3.13
+
+pipeline:
+  max_age_hours: 24          # 이 시간 이내 기사만 수집
+  max_articles_per_section: 20  # 섹션당 최종 카드 최대 수
+  language_filter: [ko, en]  # 허용 언어
+
+dedup:
+  url_history_db: data/history.db
+  title_similarity_threshold: 0.85  # 제목 유사도 기준
+
+claude:
+  model: claude-sonnet-4-5
+  max_input_tokens: 1000     # 기사 본문 truncate 기준
+  batch_size: 10             # 1차 필터링 배치 크기
+
+site:
+  website_dir: website
+  data_file: website/data/articles.json
+
+git:
+  auto_push: true
+  commit_message: "daily update: {date}"
