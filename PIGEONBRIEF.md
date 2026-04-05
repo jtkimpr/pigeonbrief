@@ -120,7 +120,7 @@ git:
 
 - `password_hash`: SHA-256 해시 (기본 비밀번호: `news2024`)
 - 브라우저 설정 UI 로그인 시 검증
-- GitHub PAT는 세션 중 메모리에만 저장 (로컬스토리지 미사용)
+- GitHub PAT는 `localStorage('github_pat')`에 저장 (재방문 시 재입력 불필요)
 
 ---
 
@@ -190,6 +190,10 @@ git commit -m "daily update: 2026-04-05"
 git push  # → Vercel이 자동 감지하여 배포
 ```
 
+**Vercel 프로젝트 설정 (pigeonbrief 레포):**
+- Output Directory: `website` (빌드 커맨드 없음, 정적 파일 직접 서빙)
+- `website/` 폴더 전체가 사이트 루트로 배포됨
+
 ---
 
 ## 프론트엔드
@@ -202,8 +206,15 @@ git push  # → Vercel이 자동 감지하여 배포
 ```
 
 - **Today**: 최근 24시간 기사 (published_at 기준)
-- **Read Later**: 사용자가 🔖로 저장한 기사
+- **Read Later**: 사용자가 🔖로 저장한 기사 (비어 있을 때 안내 문구 표시)
 - **주제별 탭**: 드래그앤드롭으로 순서 변경 가능
+
+### 카드 UI
+
+- **요약 텍스트**: `# 요약` 등 마크다운 헤더 접두어 자동 제거 (`cleanSummary()`)
+- **요약 높이**: `line-clamp: 4`로 고정해 카드 높이 균일화
+- **외부 링크**: 우상단 SVG 아이콘 버튼으로 표시, 클릭 시 읽음 처리 (`ni_read`)
+- **읽음 상태**: 제목 색이 회색(`#aaa`)으로 변경 (`localStorage 'ni_read'`)
 
 ### 카드 액션 (localStorage 기반)
 
@@ -213,16 +224,17 @@ git push  # → Vercel이 자동 감지하여 배포
 | 🔖 나중에 읽기 | 토글 | `ni_read_later` (object) |
 | ✕ 삭제 | 즉시 숨김 | `ni_deleted` (array) |
 
+- 액션 버튼: 항상 살짝 보임 (opacity 0.35), 호버 시 완전 표시
 - 좋아요한 기사: 7일 자동삭제 시 localStorage에 전체 데이터 보존
 - Read Later 탭에서 🔖 해제 시 목록에서 제거
 
 ### 설정 UI
 
-⚙️ 버튼 → 현재 활성 탭의 섹션 설정 오픈 (Today/Read Later 탭에서는 섹션 목록)
+Google Material Design SVG 기어 아이콘 버튼 → 현재 활성 탭의 섹션 설정 오픈 (Today/Read Later 탭에서는 섹션 목록)
 
 **인증 흐름:**
-1. SHA-256 비밀번호 검증 (sessionStorage로 세션 중 유지)
-2. GitHub PAT 입력 (메모리에만 보관)
+1. SHA-256 비밀번호 검증 (`sessionStorage`로 세션 중 유지)
+2. GitHub PAT 입력 (`localStorage('github_pat')`에 저장, 재방문 시 생략)
 3. 섹션 편집 → GitHub API PUT으로 `config/sections.json` 저장
 
 **섹션 편집:**
@@ -282,7 +294,9 @@ print(new_hash)
 |------|------|
 | 브라우저 → GitHub API 직접 저장 | 별도 백엔드 서버 불필요, Vercel 정적 호스팅 유지 |
 | articles.json 7일 누적 | 하루치만 저장하면 파이프라인 실패 시 빈 화면; 누적으로 안정성 확보 |
-| PAT를 세션 메모리에만 보관 | 보안 (localStorage에 토큰 저장 지양) |
+| PAT를 localStorage에 저장 | 재방문 시 매번 입력하는 불편 해소 |
 | data-action 이벤트 위임 | 카드 제목에 따옴표 포함 시 onclick 인라인 JSON 파싱 오류 방지 |
 | dedup mark_as_seen 지연 | 사이트 생성 실패 시 다음 실행에서 재처리 가능하게 |
 | launchd (not cron) | Mac 절전 후 자동 재실행, 로그 통합 관리 |
+| cleanSummary() 전처리 | Claude 요약 결과의 `# 요약` 마크다운 헤더가 카드에 노출되는 문제 방지 |
+| Vercel Output Directory = website | 빌드 스크립트 없이 정적 폴더 직접 서빙, 배포 단순화 |
