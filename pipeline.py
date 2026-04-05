@@ -1,5 +1,5 @@
 """
-뉴스 인텔리전스 파이프라인 메인 스크립트
+PigeonBrief 파이프라인 메인 스크립트
 launchd → scripts/run_pipeline.sh → 이 파일 실행
 
 단계:
@@ -111,7 +111,7 @@ def main():
     start_time = datetime.now(timezone.utc)
     date_str = start_time.strftime('%Y-%m-%d')
     print(f"{'='*50}")
-    print(f"뉴스 인텔리전스 파이프라인 시작: {date_str}")
+    print(f"PigeonBrief 파이프라인 시작: {date_str}")
     print(f"{'='*50}")
 
     try:
@@ -142,7 +142,7 @@ def main():
 
         if not deduped:
             print("\n처리할 새 기사 없음. 종료.")
-            notify_mac("뉴스 인텔리전스", f"{date_str} - 새 기사 없음")
+            notify_mac("PigeonBrief", f"{date_str} - 새 기사 없음")
             return
 
         # 4. Claude 처리
@@ -153,7 +153,7 @@ def main():
 
         if not processed:
             print("관련 기사 없음. 종료.")
-            notify_mac("뉴스 인텔리전스", f"{date_str} - 관련 기사 없음")
+            notify_mac("PigeonBrief", f"{date_str} - 관련 기사 없음")
             return
 
         # 5. 사이트 JSON 생성
@@ -176,13 +176,13 @@ def main():
         elapsed = (datetime.now(timezone.utc) - start_time).total_seconds()
         print(f"\n{'='*50}")
         print(f"완료: {total}개 기사, {elapsed:.0f}초 소요")
-        notify_mac("뉴스 인텔리전스", f"{date_str} 업데이트 완료 ({total}개)")
+        notify_mac("PigeonBrief", f"{date_str} 업데이트 완료 ({total}개)")
 
     except Exception as e:
         import traceback
         print(f"\n[오류] {e}")
         traceback.print_exc()
-        notify_mac("뉴스 인텔리전스 오류", str(e)[:80])
+        notify_mac("PigeonBrief 오류", str(e)[:80])
         sys.exit(1)
 
 

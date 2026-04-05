@@ -166,10 +166,13 @@ async function submitPat(pendingId) {
 function renderSectionList() {
   const sections = sectionsData?.sections || [];
   const listHtml = sections.map((sec, i) => `
-    <button class="section-list-item" onclick="renderSectionEditor(${i})">
-      <span class="section-list-name">${escHtml(sec.name)}</span>
-      <span class="section-list-arrow">→</span>
-    </button>
+    <div class="section-list-item">
+      <span class="section-list-name" onclick="renderSectionEditor(${i})">${escHtml(sec.name)}</span>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="btn-icon section-list-arrow" onclick="renderSectionEditor(${i})" title="편집">→</button>
+        <button class="btn-icon btn-danger-text" onclick="confirmRemoveSection(${i})" title="삭제">🗑</button>
+      </div>
+    </div>
   `).join('');
 
   showBody(`

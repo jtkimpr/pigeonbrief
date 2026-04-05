@@ -320,19 +320,25 @@ header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 16px;
+  padding: 10px 14px;
   border: 1px solid #e8e8e8;
   border-radius: 10px;
   background: #fafafa;
-  cursor: pointer;
   text-align: left;
+  transition: background 0.12s, border-color 0.12s;
+}
+.section-list-item:hover { background: #f5f5f7; border-color: #ddd; }
+
+.section-list-name {
   font-size: 14px;
   font-weight: 500;
   color: #1d1d1f;
-  transition: background 0.12s, border-color 0.12s;
+  flex: 1;
+  cursor: pointer;
+  padding: 2px 0;
 }
-.section-list-item:hover { background: #f0f7ff; border-color: #c5d0f5; }
-.section-list-arrow { color: #aaa; }
+.section-list-name:hover { color: #0071e3; }
+.section-list-arrow { color: #aaa; font-size: 14px; }
 
 /* 섹션 에디터 필드 */
 .editor-field { margin-bottom: 14px; }
