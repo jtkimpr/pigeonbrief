@@ -37,9 +37,8 @@ function buildNav() {
   const nav = document.getElementById('section-tabs');
   nav.innerHTML = '';
 
-  // 고정 탭: All / Today / Read Later
+  // 고정 탭: Today / Read Later
   [
-    { id: 'all',        label: 'All' },
     { id: 'today',      label: 'Today' },
     { id: 'read-later', label: 'Read Later' },
   ].forEach(({ id, label }) => {
@@ -153,18 +152,6 @@ function render() {
     grid.innerHTML = arts.length
       ? arts.map(makeCard).join('')
       : '<div class="empty-state">나중에 읽기로 저장된 기사가 없습니다.</div>';
-
-  } else if (activeSection === 'all') {
-    const sections = allData?.sections || [];
-    if (!sections.length) {
-      grid.innerHTML = '<div class="empty-state">아직 수집된 기사가 없습니다.</div>';
-      return;
-    }
-    grid.innerHTML = sections.map(sec => {
-      const arts = (sec.articles || []).filter(a => !deleted.has(a.id));
-      if (!arts.length) return '';
-      return `<div class="section-header">${sec.name}</div>` + arts.map(makeCard).join('');
-    }).join('');
 
   } else {
     const sec  = (allData?.sections || []).find(s => s.id === activeSection);

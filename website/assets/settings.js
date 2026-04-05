@@ -88,7 +88,7 @@ function savePat(pat)   { pat ? localStorage.setItem('github_pat', pat) : localS
 
 // ─── 라우팅 ───────────────────────────────────────────────────────────────────
 
-const FIXED_SECTIONS = ['all', 'today', 'read-later', ''];
+const FIXED_SECTIONS = ['today', 'read-later', ''];
 
 async function routeToSection(sectionId) {
   showBody('<div class="settings-loading">설정 불러오는 중...</div>');
