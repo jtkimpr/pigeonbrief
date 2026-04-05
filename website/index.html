@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>News Intelligence</title>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <link rel="stylesheet" href="assets/style.css?v=2">
+  <link rel="stylesheet" href="assets/style.css?v=3">
 </head>
 <body>
   <header>
@@ -14,18 +14,13 @@
         <h1>News Intelligence</h1>
         <p class="subtitle" id="generated-at"></p>
       </div>
-      <button class="btn-settings" onclick="openSettings()" title="설정">⚙️</button>
+      <button class="btn-settings" onclick="openSettingsForCurrent()" title="현재 섹션 설정">⚙️</button>
     </div>
   </header>
 
-  <nav id="section-tabs">
-    <button class="tab active" data-section="all">전체</button>
-    <!-- 섹션 탭은 JS에서 동적 생성 -->
-  </nav>
+  <nav id="section-tabs"></nav>
 
-  <main id="card-grid">
-    <!-- 카드는 JS에서 동적 렌더링 -->
-  </main>
+  <main id="card-grid"></main>
 
   <!-- 설정 패널 (오버레이) -->
   <div id="settings-panel" style="display:none">
@@ -38,7 +33,7 @@
     </div>
   </div>
 
-  <script src="assets/app.js?v=2"></script>
-  <script src="assets/settings.js?v=2"></script>
+  <script src="assets/app.js?v=3"></script>
+  <script src="assets/settings.js?v=3"></script>
 </body>
 </html>
