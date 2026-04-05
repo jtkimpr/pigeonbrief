@@ -2,11 +2,14 @@
  * settings.js — 섹션별 RSS/키워드 관리 UI
  * openSettings(sectionId) — 특정 섹션 설정 / '__new__' — 새 섹션 추가
  * All·Today·Read Later에서 열면 → 섹션 목록 표시
+ *
+ * GitHub PAT는 서버(Vercel API Route)에서만 사용 — 브라우저에 노출되지 않음
  */
 
 let siteConfig   = null;
 let sectionsData = null;
 let currentSha   = null;
+let authHash     = null;   // 인증된 비밀번호 해시 (API 호출 인증 헤더로 사용)
 
 // ─── 진입점 ──────────────────────────────────────────────────────────────────
 
@@ -44,7 +47,9 @@ function showBody(html) {
 // ─── 인증 ─────────────────────────────────────────────────────────────────────
 
 function isAuthenticated() {
-  return sessionStorage.getItem('settings_auth') === 'ok';
+  const ok = sessionStorage.getItem('settings_auth') === 'ok';
+  if (ok && !authHash) authHash = sessionStorage.getItem('settings_auth_hash');
+  return ok;
 }
 
 function showAuthScreen(pendingId) {
@@ -67,7 +72,9 @@ async function submitAuth(pendingId) {
   const input = document.getElementById('auth-pw').value;
   const hash  = await sha256(input);
   if (hash === siteConfig.password_hash) {
+    authHash = hash;
     sessionStorage.setItem('settings_auth', 'ok');
+    sessionStorage.setItem('settings_auth_hash', hash);
     await routeToSection(pendingId || null);
   } else {
     const err = document.getElementById('auth-error');
@@ -81,11 +88,6 @@ async function sha256(str) {
   return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
 }
 
-// ─── GitHub PAT ───────────────────────────────────────────────────────────────
-
-function getStoredPat() { return localStorage.getItem('github_pat') || ''; }
-function savePat(pat)   { pat ? localStorage.setItem('github_pat', pat) : localStorage.removeItem('github_pat'); }
-
 // ─── 라우팅 ───────────────────────────────────────────────────────────────────
 
 const FIXED_SECTIONS = ['today', 'read-later', ''];
@@ -93,15 +95,10 @@ const FIXED_SECTIONS = ['today', 'read-later', ''];
 async function routeToSection(sectionId) {
   showBody('<div class="settings-loading">설정 불러오는 중...</div>');
 
-  if (!getStoredPat()) {
-    showPatScreen(sectionId, '');
-    return;
-  }
-
   try {
     if (!sectionsData) await loadSectionsFromGitHub();
   } catch (e) {
-    showPatScreen(sectionId, e.message);
+    showBody(`<div class="settings-error">${e.message}</div>`);
     return;
   }
 
@@ -115,53 +112,22 @@ async function routeToSection(sectionId) {
   }
 }
 
+// ─── GitHub 연동 (/api/config 경유, PAT는 서버에서만 사용) ───────────────────
+
 async function loadSectionsFromGitHub() {
-  const pat = getStoredPat();
-  if (!pat) throw new Error('GitHub PAT가 없습니다.');
-
-  const { github_repo, github_branch, config_path } = siteConfig;
-  const url = `https://api.github.com/repos/${github_repo}/contents/${config_path}?ref=${github_branch}`;
-
-  const res = await fetch(url, {
-    headers: { 'Authorization': `Bearer ${pat}`, 'Accept': 'application/vnd.github+json' }
+  const res = await fetch('/api/config', {
+    headers: { 'x-password-hash': authHash },
   });
-
   if (res.status === 401 || res.status === 403)
-    throw new Error('GitHub PAT 권한 오류 (repo 읽기/쓰기 필요)');
-  if (!res.ok) throw new Error(`GitHub API 오류: ${res.status}`);
+    throw new Error('인증 오류 — 비밀번호를 다시 확인하세요');
+  if (!res.ok) throw new Error(`서버 오류: ${res.status}`);
 
-  const data = await res.json();
+  const data   = await res.json();
   currentSha   = data.sha;
   sectionsData = JSON.parse(atob(data.content.replace(/\n/g, '')));
 }
 
-function showPatScreen(pendingId, errorMsg) {
-  const id = pendingId || '';
-  showBody(`
-    <div class="settings-auth">
-      <div class="settings-auth-icon">🔑</div>
-      <h2>GitHub Personal Access Token</h2>
-      <p>설정을 저장하려면 GitHub PAT가 필요합니다.<br>
-        <small>repo 권한의 Classic PAT 또는 Fine-grained PAT</small></p>
-      <input type="password" id="pat-input" placeholder="ghp_..."
-        value="${getStoredPat()}"
-        onkeydown="if(event.key==='Enter') submitPat('${id}')" autofocus />
-      <button class="btn-primary" onclick="submitPat('${id}')">연결</button>
-      ${errorMsg ? `<div class="settings-error">${errorMsg}</div>` : ''}
-    </div>
-  `);
-  setTimeout(() => document.getElementById('pat-input')?.focus(), 80);
-}
-
-async function submitPat(pendingId) {
-  const pat = document.getElementById('pat-input').value.trim();
-  if (!pat) return;
-  savePat(pat);
-  sectionsData = null;  // 재로드
-  await routeToSection(pendingId);
-}
-
-// ─── 섹션 목록 (고정 탭에서 ⚙️ 클릭 시) ────────────────────────────────────
+// ─── 섹션 목록 (고정 탭에서 ⚙ 클릭 시) ─────────────────────────────────────
 
 function renderSectionList() {
   const sections = sectionsData?.sections || [];
@@ -178,9 +144,8 @@ function renderSectionList() {
   showBody(`
     <div class="settings-toolbar">
       <span style="flex:1; font-size:13px; color:#888">편집할 섹션을 선택하세요</span>
-      <button class="btn-small btn-secondary" onclick="showPatScreen(null,'')">PAT 변경</button>
       <button class="btn-small btn-secondary"
-        onclick="sessionStorage.removeItem('settings_auth'); closeSettings()">로그아웃</button>
+        onclick="sessionStorage.removeItem('settings_auth'); sessionStorage.removeItem('settings_auth_hash'); closeSettings()">로그아웃</button>
     </div>
     <div class="section-list">${listHtml || '<div class="empty-hint">등록된 섹션이 없습니다.</div>'}</div>
     <button class="btn-add-section" onclick="renderNewSectionEditor()">+ 새 섹션 추가</button>
@@ -347,34 +312,25 @@ async function saveToGitHub() {
   if (statusEl) { statusEl.textContent = ''; statusEl.className = ''; }
 
   try {
-    const pat = getStoredPat();
-    if (!pat) throw new Error('GitHub PAT 없음');
-
-    const { github_repo, github_branch, config_path } = siteConfig;
     const content    = JSON.stringify(sectionsData, null, 2);
     const contentB64 = btoa(unescape(encodeURIComponent(content)));
 
-    const res = await fetch(
-      `https://api.github.com/repos/${github_repo}/contents/${config_path}`,
-      {
-        method: 'PUT',
-        headers: {
-          'Authorization':  `Bearer ${pat}`,
-          'Accept':         'application/vnd.github+json',
-          'Content-Type':   'application/json',
-        },
-        body: JSON.stringify({
-          message: `settings update: ${new Date().toISOString().slice(0,10)}`,
-          content: contentB64,
-          branch:  github_branch,
-          sha:     currentSha,
-        }),
-      }
-    );
+    const res = await fetch('/api/config', {
+      method:  'PUT',
+      headers: {
+        'x-password-hash': authHash,
+        'Content-Type':    'application/json',
+      },
+      body: JSON.stringify({
+        message: `settings update: ${new Date().toISOString().slice(0,10)}`,
+        content: contentB64,
+        sha:     currentSha,
+      }),
+    });
 
     if (!res.ok) {
       const err = await res.json();
-      throw new Error(err.message || `HTTP ${res.status}`);
+      throw new Error(err.error || `HTTP ${res.status}`);
     }
 
     const result = await res.json();
@@ -393,17 +349,9 @@ async function saveToGitHub() {
 // ─── 섹션 순서 저장 (app.js drag-drop 후 호출) ───────────────────────────────
 
 window.saveSectionOrder = async function(newSectionIds) {
-  const pat = getStoredPat();
-  if (!pat) {
-    if (window.showToast) window.showToast('순서 저장: 설정에서 PAT를 먼저 입력하세요.');
+  if (!authHash) {
+    if (window.showToast) window.showToast('순서 저장: 설정 화면에서 먼저 로그인하세요.');
     return;
-  }
-
-  if (!siteConfig) {
-    try {
-      const res = await fetch('data/site_config.json?_=' + Date.now());
-      siteConfig = await res.json();
-    } catch(e) { return; }
   }
 
   try {
@@ -411,7 +359,6 @@ window.saveSectionOrder = async function(newSectionIds) {
     const byId = {};
     sectionsData.sections.forEach(s => { byId[s.id] = s; });
     sectionsData.sections = newSectionIds.map(id => byId[id]).filter(Boolean);
-    // 혹시 누락된 섹션 보전
     Object.values(byId).forEach(s => {
       if (!sectionsData.sections.find(x => x.id === s.id)) sectionsData.sections.push(s);
     });
@@ -430,7 +377,6 @@ function escHtml(str) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // siteConfig 미리 로드 (drag-drop 순서 저장에서 필요)
   try {
     const res = await fetch('data/site_config.json?_=' + Date.now());
     siteConfig = await res.json();
