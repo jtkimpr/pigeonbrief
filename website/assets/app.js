@@ -6,10 +6,26 @@ const articlesById = {};
 const LS_LIKED      = 'ni_liked';
 const LS_DELETED    = 'ni_deleted';
 const LS_READ_LATER = 'ni_read_later';
+const LS_READ       = 'ni_read';
 
 function getLiked()     { return JSON.parse(localStorage.getItem(LS_LIKED)      || '{}'); }
 function getDeleted()   { return JSON.parse(localStorage.getItem(LS_DELETED)    || '[]'); }
 function getReadLater() { return JSON.parse(localStorage.getItem(LS_READ_LATER) || '{}'); }
+function getRead()      { return JSON.parse(localStorage.getItem(LS_READ)       || '{}'); }
+
+function markRead(id) {
+  const read = getRead();
+  if (!read[id]) {
+    read[id] = true;
+    localStorage.setItem(LS_READ, JSON.stringify(read));
+    const titleEl = document.querySelector(`#card-${id} .card-title`);
+    if (titleEl) titleEl.classList.add('is-read');
+  }
+}
+
+function cleanSummary(text) {
+  return (text || '').replace(/^#+\s+[^\n]*\n?/, '').trim();
+}
 
 // ─── 데이터 로드 ──────────────────────────────────────────────────────────────
 
@@ -21,11 +37,6 @@ async function loadData() {
   );
   buildNav();
   render();
-  if (allData.generated_at) {
-    const d = new Date(allData.generated_at);
-    document.getElementById('generated-at').textContent =
-      `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')} 업데이트`;
-  }
 }
 
 // ─── 네비게이션 빌드 ──────────────────────────────────────────────────────────
@@ -151,7 +162,7 @@ function render() {
     const arts = getReadLaterArticles().filter(a => !deleted.has(a.id));
     grid.innerHTML = arts.length
       ? arts.map(makeCard).join('')
-      : '<div class="empty-state">나중에 읽기로 저장된 기사가 없습니다.</div>';
+      : '<div class="empty-state"><div class="empty-icon">🔖</div><p>저장된 기사가 없습니다.</p><p class="empty-hint">기사 카드 위에 마우스를 올린 뒤 🔖 버튼을 눌러 저장하세요.</p></div>';
 
   } else {
     const sec  = (allData?.sections || []).find(s => s.id === activeSection);
@@ -191,6 +202,7 @@ function makeCard(article) {
   const id      = article.id;
   const isLiked = !!getLiked()[id];
   const isRL    = !!getReadLater()[id];
+  const isRead  = !!getRead()[id];
 
   return `
     <div class="card" id="card-${id}">
@@ -198,10 +210,10 @@ function makeCard(article) {
         <span class="card-source">${article.source_name || ''}</span>
         <span class="card-time">${timeAgo(article.published_at)}</span>
       </div>
-      <a class="card-title-link" href="${article.url}" target="_blank" rel="noopener">
-        <div class="card-title">${article.title}</div>
+      <a class="card-title-link" href="${article.url}" target="_blank" rel="noopener" onclick="markRead('${id}')">
+        <div class="card-title${isRead ? ' is-read' : ''}">${article.title}</div>
       </a>
-      <div class="card-summary">${article.summary_ko || ''}</div>
+      <div class="card-summary">${cleanSummary(article.summary_ko)}</div>
       <div class="card-footer">
         <div class="card-actions">
           <button class="action-btn ${isLiked ? 'active-like' : ''}"
@@ -214,7 +226,10 @@ function makeCard(article) {
             data-action="delete" data-id="${id}"
             title="삭제">✕</button>
         </div>
-        <a class="card-link" href="${article.url}" target="_blank" rel="noopener">원문 보기 →</a>
+        <a class="card-link" href="${article.url}" target="_blank" rel="noopener" onclick="markRead('${id}')">
+          원문 보기
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:2px"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
       </div>
     </div>`;
 }

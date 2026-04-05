@@ -20,19 +20,20 @@ header {
 }
 
 header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
-.subtitle  { font-size: 12px; color: #888; margin-top: 4px; }
 
 .btn-settings {
   background: none;
   border: none;
-  font-size: 20px;
   cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 8px;
-  transition: background 0.15s;
-  line-height: 1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #5f6368;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
 }
-.btn-settings:hover { background: #f0f0f0; }
+.btn-settings:hover { background: #f1f3f4; color: #202124; }
 
 /* ── 섹션 탭 버튼 그리드 ────────────────────────── */
 #section-tabs {
@@ -139,6 +140,7 @@ header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
   line-height: 1.4;
   color: #1d1d1f;
 }
+.card-title.is-read { color: #aaa; font-weight: 500; }
 .card-title-link:hover .card-title { color: #0071e3; }
 
 .card-summary {
@@ -146,6 +148,10 @@ header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
   line-height: 1.65;
   color: #444;
   flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .card-footer {
@@ -160,14 +166,22 @@ header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
   color: #0071e3;
   text-decoration: none;
   font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #c5daf5;
+  background: #f0f7ff;
+  transition: background 0.15s, border-color 0.15s;
 }
-.card-link:hover { text-decoration: underline; }
+.card-link:hover { background: #dceeff; border-color: #a0c4f0; text-decoration: none; }
 
 /* 카드 액션 버튼 */
 .card-actions {
   display: flex;
   gap: 2px;
-  opacity: 0;
+  opacity: 0.35;
   transition: opacity 0.15s;
 }
 .card:hover .card-actions { opacity: 1; }
@@ -205,7 +219,13 @@ header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
   padding: 60px 20px;
   color: #aaa;
   font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
+.empty-icon { font-size: 36px; margin-bottom: 4px; }
+.empty-hint { font-size: 12px; color: #bbb; }
 
 /* ── 토스트 알림 ─────────────────────────────────── */
 #ni-toast {
