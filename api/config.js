@@ -1,48 +1,41 @@
 /**
  * /api/config — GitHub config/sections.json 읽기/쓰기 프록시
  *
- * GITHUB_PAT 환경변수만 Vercel에 설정하면 됩니다.
- * password_hash, github_repo 등은 site_config.json에서 읽습니다.
- *
- * GET  /api/config → sections.json 내용 반환
- * PUT  /api/config → sections.json 업데이트
- *
- * 모든 요청에 x-password-hash 헤더 필요 (서버에서 인증 검증)
+ * Vercel 환경변수 필요:
+ *   GITHUB_PAT      — GitHub Personal Access Token (필수)
+ *   PASSWORD_HASH   — site_config.json의 password_hash 값 (필수)
+ *   GITHUB_REPO     — 기본값: jtkimpr/news-intelligence
+ *   GITHUB_BRANCH   — 기본값: main
+ *   CONFIG_PATH     — 기본값: config/sections.json
  */
-
-const fs   = require('fs');
-const path = require('path');
-
-let _cfg = null;
-
-function getSiteConfig() {
-  if (!_cfg) {
-    const p = path.join(process.cwd(), 'website', 'data', 'site_config.json');
-    _cfg = JSON.parse(fs.readFileSync(p, 'utf8'));
-  }
-  return _cfg;
-}
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET, PUT, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, x-password-hash');
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  // ── 인증: 클라이언트가 보낸 해시를 서버에서 재검증 ──────────────────────
-  const cfg        = getSiteConfig();
-  const clientHash = req.headers['x-password-hash'];
-  if (!clientHash || clientHash !== cfg.password_hash) {
+  // ── 인증 ─────────────────────────────────────────────────────────────────
+  const clientHash   = req.headers['x-password-hash'];
+  const passwordHash = process.env.PASSWORD_HASH;
+
+  if (!passwordHash) {
+    return res.status(500).json({ error: 'PASSWORD_HASH 환경변수가 설정되지 않았습니다.' });
+  }
+  if (!clientHash || clientHash !== passwordHash) {
     return res.status(401).json({ error: '인증 실패' });
   }
 
-  // ── GitHub API 설정 ──────────────────────────────────────────────────────
-  const pat = process.env.GITHUB_PAT;
+  // ── GitHub 설정 ──────────────────────────────────────────────────────────
+  const pat        = process.env.GITHUB_PAT;
+  const repo       = process.env.GITHUB_REPO   || 'jtkimpr/news-intelligence';
+  const branch     = process.env.GITHUB_BRANCH || 'main';
+  const configPath = process.env.CONFIG_PATH   || 'config/sections.json';
+
   if (!pat) {
     return res.status(500).json({ error: 'GITHUB_PAT 환경변수가 설정되지 않았습니다.' });
   }
 
-  const { github_repo, github_branch, config_path } = cfg;
-  const apiUrl = `https://api.github.com/repos/${github_repo}/contents/${config_path}`;
+  const apiUrl    = `https://api.github.com/repos/${repo}/contents/${configPath}`;
   const ghHeaders = {
     'Authorization':        `Bearer ${pat}`,
     'Accept':               'application/vnd.github+json',
@@ -50,21 +43,21 @@ module.exports = async function handler(req, res) {
   };
 
   try {
-    // ── GET: sections.json 읽기 ─────────────────────────────────────────────
+    // ── GET ───────────────────────────────────────────────────────────────
     if (req.method === 'GET') {
-      const r = await fetch(`${apiUrl}?ref=${github_branch}`, { headers: ghHeaders });
+      const r = await fetch(`${apiUrl}?ref=${branch}`, { headers: ghHeaders });
       const d = await r.json();
       if (!r.ok) return res.status(r.status).json({ error: d.message });
       return res.status(200).json(d);
     }
 
-    // ── PUT: sections.json 쓰기 ─────────────────────────────────────────────
+    // ── PUT ───────────────────────────────────────────────────────────────
     if (req.method === 'PUT') {
       const { message, content, sha } = req.body;
       const r = await fetch(apiUrl, {
         method:  'PUT',
         headers: { ...ghHeaders, 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ message, content, sha, branch: github_branch }),
+        body:    JSON.stringify({ message, content, sha, branch }),
       });
       const d = await r.json();
       if (!r.ok) return res.status(r.status).json({ error: d.message });
