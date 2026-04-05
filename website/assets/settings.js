@@ -189,14 +189,14 @@ function renderSectionList() {
 
 // ─── 섹션 에디터 ──────────────────────────────────────────────────────────────
 
-function renderSectionEditor(idx) {
+function renderSectionEditor(idx, isNew = false) {
   const sec = sectionsData?.sections[idx];
   if (!sec) { renderSectionList(); return; }
 
   const rssHtml = buildRssHtml(idx, sec);
   const kwHtml  = buildKwHtml(idx, sec);
 
-  showBody(`
+  const toolbar = isNew ? '' : `
     <div class="settings-toolbar">
       <button class="btn-small btn-secondary" onclick="renderSectionList()">← 목록</button>
       <span style="flex:1"></span>
@@ -204,7 +204,22 @@ function renderSectionEditor(idx) {
         <input type="checkbox" ${sec.enabled !== false ? 'checked' : ''}
           onchange="updateSectionEnabled(${idx},this.checked)" /> 활성
       </label>
-    </div>
+    </div>`;
+
+  const footer = isNew
+    ? `<div class="settings-footer">
+        <div id="save-status"></div>
+        <button class="btn-primary btn-save" onclick="saveToGitHub()">저장</button>
+       </div>`
+    : `<div class="settings-footer">
+        <button class="btn-small btn-secondary btn-danger-text"
+          onclick="confirmRemoveSection(${idx})">섹션 삭제</button>
+        <div id="save-status"></div>
+        <button class="btn-primary btn-save" onclick="saveToGitHub()">저장</button>
+       </div>`;
+
+  showBody(`
+    ${toolbar}
 
     <div class="editor-field">
       <label class="editor-label">섹션 이름</label>
@@ -234,12 +249,7 @@ function renderSectionEditor(idx) {
       <div id="kw-list-${idx}">${kwHtml}</div>
     </div>
 
-    <div class="settings-footer">
-      <button class="btn-small btn-secondary btn-danger-text"
-        onclick="confirmRemoveSection(${idx})">섹션 삭제</button>
-      <div id="save-status"></div>
-      <button class="btn-primary btn-save" onclick="saveToGitHub()">저장</button>
-    </div>
+    ${footer}
   `);
 }
 
@@ -253,7 +263,7 @@ function renderNewSectionEditor() {
     channel2_rss: { sources: [] },
     channel3_keywords: { max_age_hours: 72, queries: [] }
   });
-  renderSectionEditor(sectionsData.sections.length - 1);
+  renderSectionEditor(sectionsData.sections.length - 1, true);
 }
 
 // ─── RSS/키워드 HTML 빌더 ─────────────────────────────────────────────────────
