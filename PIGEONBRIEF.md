@@ -288,6 +288,27 @@ print(new_hash)
 
 ---
 
+## 주요 변경 이력
+
+### 2026-04-06
+
+**채널3 키워드 UI 개선 (`settings.js`, `style.css`)**
+- 기존: raw 쿼리 텍스트 입력 (`"AI agent OR LLM -hype"` 직접 타이핑)
+- 변경: 시각적 태그 빌더로 교체
+  - **모두 포함(AND)** / **하나라도(OR)** / **제외(NOT)** 3개 태그 그룹
+  - 각 그룹은 Enter 또는 `,`로 태그 추가, ✕로 삭제
+  - 그룹 간 OR 관계를 구분선으로 명시
+  - 하단 '쿼리' 미리보기로 실제 조합 결과 실시간 확인
+  - `parseQuery()` / `assembleQuery()`로 기존 `sections.json` 데이터 호환 유지
+
+**헤더 디자인 개선 (`index.html`, `style.css`)**
+- 비둘기 SVG 로고 추가 (날개 펼친 심볼릭 실루엣, inline SVG)
+- 폰트 변경: 시스템 기본 → **Libre Baskerville** (Google Fonts, 상업용 무료)
+  - Times New Roman과 유사한 전통 세리프 느낌
+  - 신문 타이틀 스타일로 브랜드 아이덴티티 강화
+
+---
+
 ## 주요 설계 결정
 
 | 결정 | 이유 |

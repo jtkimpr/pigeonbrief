@@ -19,7 +19,21 @@ header {
   align-items: flex-start;
 }
 
-header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-logo {
+  color: #1d1d1f;
+  flex-shrink: 0;
+}
+header h1 {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
 
 .btn-settings {
   background: none;
