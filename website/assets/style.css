@@ -241,6 +241,25 @@ header h1 {
 .empty-icon { font-size: 36px; margin-bottom: 4px; }
 .empty-hint { font-size: 12px; color: #bbb; }
 
+.empty-state.onboarding {
+  padding: 80px 20px;
+  gap: 12px;
+  color: #444;
+}
+.empty-state.onboarding h2 {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1d1d1f;
+  margin: 0;
+}
+.empty-state.onboarding p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #666;
+  margin: 0;
+}
+
 /* ── 토스트 알림 ─────────────────────────────────── */
 #ni-toast {
   position: fixed;

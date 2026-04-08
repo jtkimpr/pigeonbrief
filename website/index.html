@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PigeonBrief</title>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <link rel="stylesheet" href="assets/style.css?v=8">
+  <link rel="stylesheet" href="assets/style.css?v=9">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -162,9 +162,18 @@
         // 비로그인: 랜딩 페이지 유지
         return;
       }
-      // 로그인 상태: 랜딩 숨기고 앱 표시
-      document.getElementById('landing').style.display = 'none';
-      document.getElementById('app').style.display = '';
+      // 로그인 상태: 랜딩 fade out → 앱 fade in
+      const landing = document.getElementById('landing');
+      const app = document.getElementById('app');
+      landing.style.transition = 'opacity 0.15s';
+      landing.style.opacity = '0';
+      setTimeout(() => {
+        landing.style.display = 'none';
+        app.style.opacity = '0';
+        app.style.display = '';
+        app.style.transition = 'opacity 0.25s';
+        requestAnimationFrame(() => requestAnimationFrame(() => { app.style.opacity = '1'; }));
+      }, 150);
       // 로그아웃 버튼 표시
       const btnSignout = document.getElementById('btn-signout');
       btnSignout.style.display = '';
@@ -175,7 +184,7 @@
       initApp();
     });
   </script>
-  <script src="assets/app.js?v=8"></script>
-  <script src="assets/settings.js?v=8"></script>
+  <script src="assets/app.js?v=9"></script>
+  <script src="assets/settings.js?v=9"></script>
 </body>
 </html>

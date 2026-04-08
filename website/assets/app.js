@@ -41,6 +41,25 @@ async function loadData() {
     (sec.articles || []).forEach(a => { articlesById[a.id] = a; })
   );
   buildNav();
+
+  // 섹션이 없는 신규 사용자 → 온보딩 안내
+  if (!allData.sections || allData.sections.length === 0) {
+    document.getElementById('card-grid').innerHTML = `
+      <div class="empty-state onboarding">
+        <svg width="52" height="40" viewBox="0 0 96 76" fill="none" xmlns="http://www.w3.org/2000/svg" style="color:#0071e3;margin-bottom:4px">
+          <path d="M 66 44 C 52 36 26 22 8 8 C 16 8 34 18 48 30 C 36 20 22 12 16 6 C 32 2 56 14 62 32 Z" fill="currentColor"/>
+          <path d="M 66 44 C 74 40 84 32 84 22 C 84 12 76 8 70 14 C 66 20 66 36 66 44 Z" fill="currentColor"/>
+          <path d="M 66 44 C 56 54 44 60 38 56 C 46 50 56 46 66 44 Z" fill="currentColor"/>
+          <polygon points="84,20 96,24 84,28" fill="currentColor"/>
+          <circle cx="76" cy="16" r="3" fill="white"/>
+        </svg>
+        <h2>환영해요!</h2>
+        <p>관심 주제와 뉴스 소스를 등록하면<br>AI가 매일 한국어로 요약해드려요.</p>
+        <a href="settings.html" class="btn-primary" style="text-decoration:none;margin-top:8px">첫 섹션 추가하기 →</a>
+      </div>`;
+    return;
+  }
+
   render();
 }
 
