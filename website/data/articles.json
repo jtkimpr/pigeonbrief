@@ -1,12 +1,129 @@
 {
-  "generated_at": "2026-04-04T13:44:59.529853+00:00",
-  "total_articles": 39,
+  "generated_at": "2026-04-08T01:59:37.369523+00:00",
+  "total_articles": 58,
   "sections": [
     {
       "id": "agentic-ai",
       "name": "Agentic AI",
-      "description": "기업용 AI 에이전트 트렌드 및 도입 사례",
+      "description": "ê¸°ìì© AI ìì´ì í¸ í¸ë ë ë° ëì ì¬ë¡",
       "articles": [
+        {
+          "id": "2c7448be718a",
+          "title": "뉴타닉스, ‘에이전틱 AI 시대’ 겨냥한 클라우드 플랫폼 대대적 확장",
+          "summary_ko": "뉴타닉스는 에이전틱 AI 시대에 대비해 클라우드 플랫폼의 신규 기능을 발표하고 인프라 경쟁력을 강화했다. 이번 업데이트는 AI 워크로드 증가와 클라우드 환경 복잡성 문제를 해결하기 위한 것이며, 기업들이 기존 인프라를 활용하면서도 통합 운영이 가능한 플랫폼을 제공한다. 이 시사점은 기업 CEO와 투자자에게 새로운 AI 및 멀티 클라우드 환경에서의 경쟁력을 확보하는 데 필요한 전략적 투자를 고려할 것을 제안한다.",
+          "url": "https://www.aitimes.kr/news/articleView.html?idxno=39460",
+          "source_name": "ì¸ê³µì§ë¥ì ë¬¸",
+          "published_at": "2026-04-08T09:17:07+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "a1dc30e0986d",
+          "title": "Agentic AI Platforms - Trend Hunter",
+          "summary_ko": "агент형 인공지능 플랫폼이 주목받고 있습니다. 이러한 플랫폼들은 사용자에게 더욱 개인화되고 능동적인 경험을 제공합니다. 기업 CEO와 투자자들에게는 새로운 비즈니스 모델과 시장 진입 전략을 탐색할 수 있는 기회를 제공하며, 의료 IT 전문가들에게는 환자 맞춤형 치료법 개발에 활용될 가능성이 열리고 있습니다.",
+          "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE94NEhpcG5EbVExSUhudFZpUnNqd0NUcmQwUnVYTXVWMm1fbkFPanI3RC1la25Ob3Iwb3QyOEhXQzVmOElBYTBWaEdKcXFKTjcxTGhzVHIxTTNHVnUzdUFN0gFkQVVfeXFMTTY2VHFsX1Z4UXVYSi12bzJuQXhnVVpWYUJiUTlERVRpNnpfM085VGIxYVRrZkZtX0pVRWNjQ0NWU1N3SGtLUzZSTGhxdHZHSUktQjU5V3cyaGQ1N2h4b2o0QU1ZMg?oc=5",
+          "source_name": "Google News: AI agent enterprise workflow",
+          "published_at": "2026-04-07T22:25:34+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "8dc091b17f31",
+          "title": "Block introduces Managerbot, a proactive Square AI agent and the clearest proof point yet for Jack Dorsey’s AI bet",
+          "summary_ko": "블록은 오늘 스퀘어 플랫폼에 내장된 인공지능 에이전트인 매니저봇을 공개했습니다. 이 기술은 판매자의 비즈니스를 모니터링하고 문제점을 식별하며 실행 가능한 해결책을 제안합니다. 이는 CEO 잭 도시의 인공지능이 회사 운영과 제품 개발, 소상공인 지원 방식을 근본적으로 변화시킬 수 있다는 논란의 여지를 남긴 전략의 가장 구체적인 증거입니다. 매니저봇은 사용자의 질문에 답하는 대신 문제를 미리 파악하고 해결책을 제안하며, 이는 스퀘어 AI와 달리 능동적이고 예방적인 접근 방식을 채택합니다.\n\n이러한 발전은 기업 CEO나 투자자에게 인공지능의 비즈니스 운영에 대한 잠재력을 재고하게 만들며, 의료 IT 전문가에게는 AI 기술의 적용 범위를 넓히는 데 있어 새로운 가능성을 제시합니다.",
+          "url": "https://venturebeat.com/data/block-introduces-managerbot-a-proactive-square-ai-agent-and-the-clearest",
+          "source_name": "VentureBeat AI",
+          "published_at": "2026-04-07T22:14:30+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "30c2262a4fd9",
+          "title": "Amazon S3 Files gives AI agents a native file system workspace, ending the object-file split that breaks multi-agent pipelines",
+          "summary_ko": "아마존 웹 서비스(AWS)는 AI 에이전트가 오브젝트 스토리지 시스템인 아마존 S3의 데이터를 직접 사용할 수 있도록 하는 'S3 Files' 기능을 출시했다. 이 새로운 기능은 AI 에이전트가 파일 시스템 도구를 사용하면서도 S3에 있는 데이터를 처리할 수 있게 해주어, 별도의 파일 시스템 레이어와 동기화 파이프라인 없이도 작업 효율을 높일 수 있다. 이 업데이트는 기업들이 AI 에이전트를 더욱 효과적으로 활용하고 데이터 접근성을 개선할 수 있도록 돕는 중요한 단계로, 향후 AI 기반 서비스의 성능과 유연성 향상에 크게 기여할 것으로 보인다.",
+          "url": "https://venturebeat.com/data/amazon-s3-files-gives-ai-agents-a-native-file-system-workspace-ending-the",
+          "source_name": "VentureBeat AI",
+          "published_at": "2026-04-07T21:36:00+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "f27e1adb3d30",
+          "title": "AI-RAN is redefining enterprise edge intelligence and autonomy",
+          "summary_ko": "AI-RAN은 기존 무선 인프라를 단순 데이터 통신 수단에서 활동적인 계산 층으로 재정의하여 제조업, 물류, 의료 등 다양한 산업 분야에 혁신을 가져올 예정이다. 이 기술은 5G와 향후 6G 네트워크를 기업 환경에서 활용할 수 있는 새로운 가능성을 열어주며, 특히 스마트 제조 및 창고 운영 등 물리적 AI와 자율화 사용 사례에 중요한 역할을 할 것으로 보인다. 기업 CEO나 투자자에게는 미래의 네트워크 인프라 전략과 관련된 새로운 비즈니스 기회를 제공하며, 의료 IT 전문가에게는 환경에 적합한 AI 기반 솔루션 개발을 촉진할 수 있는 플랫폼으로서의 잠재력을 보여준다.",
+          "url": "https://venturebeat.com/infrastructure/ai-ran-is-redefining-enterprise-edge-intelligence-and-autonomy",
+          "source_name": "VentureBeat AI",
+          "published_at": "2026-04-07T15:05:07+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "d24cb9259282",
+          "title": "Xccelera Raises Rs 1.2 Crore to Expand Agentic AI Platform for Enterprise Automation - Indian Startup Times",
+          "summary_ko": "인도의 기업 자동화 플랫폼을 제공하는 스타트업 Xccelera가 1억 2천만 루피(약 150만 달러)를 조달하여 Agentic AI 플랫폼을 확장할 계획이다. 이번 투자는 기업들이 인공지능 기술을 활용해 업무 효율성을 높이는데 도움을 주는 중요한 역할을 할 전망이다. 이와 같은 움직임은 기업 CEO들과 투자자들에게 AI를 통한 비즈니스 자동화의 중요성과 잠재력을 인식하게 하고, 의료 IT 전문가들에게는 AI 기술이 산업 내에서 더욱 확대될 수 있음을 시사한다.",
+          "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQb29DZTJILUdCazNWSUhGRmVPMmNaUmFBUUdnSEo2SzZBZ0w4SjZpc0lzWUt2Ym9fQjB5QVdOcVk0YTA3T21RSUI5cnRLS0ZJM1diZ0lQVUVvdWI5SzM4NExETGJnY20tMkxKbEJMamRqNnZMbFJLYXVwVFcyY2VnUF83SXdpdFNTeTg0a01MTVJtSjZBeENOaHZTVm5sbTViNUwtMHIxV3hhNVktdXZCc0RyTjlsNFlYSTJPbDVJVFNSZG9TeDFubVozYw?oc=5",
+          "source_name": "Google News: agentic AI business automation",
+          "published_at": "2026-04-07T14:29:12+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "bc802fa199e8",
+          "title": "앤트로픽, 구글·브로드컴과 초대형 AI 인프라 동맹 구축…수 기가와트급 TPU 확보, 클로드 중심 프론티어 AI 확장 가속",
+          "summary_ko": "앤트로픽이 구글과 브로드컴과 협력하여 수 기가와트 규모의 TPU 컴퓨팅 용량 확보 계약을 체결함으로써 AI 산업에서 컴퓨팅 자원의 중요성이 더욱 부각되고 있다. 이는 향후 AI 모델 개발 및 서비스 제공에 있어 컴퓨팅 인프라가 핵심 요소임을 강조한다. 기업 CEO와 투자자에게는 대규모 컴퓨팅 자원 확보를 통한 기술 경쟁력 제고의 중요성을 시사하며, 의료 IT 전문가들에게는 AI 서비스 제공을 위한 고성능 인프라 구축이 필수적임을 의미한다.",
+          "url": "https://www.aitimes.kr/news/articleView.html?idxno=39449",
+          "source_name": "ì¸ê³µì§ë¥ì ë¬¸",
+          "published_at": "2026-04-07T13:09:47+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "56080e581cb1",
+          "title": "Automation Anywhere Reports 61% of Q4 Software Bookings from AI as Enterprises Deploy Agentic AI to Run Core Business Functions - PR Newswire",
+          "summary_ko": "Automation Anywhere의 지난 분기 소프트웨어 계약 중 61%가 인공지능(AI) 관련으로, 기업들이 핵심 비즈니스 기능을 수행하기 위해 에이전시 AI를 배포하고 있음을 보여주고 있다. 이는 기업들이 AI 기술을 통해 운영 효율성을 높이고자 하는 추세가 확산되고 있음을 나타낸다. 이 변화는 IT 전문가와 기업 CEO들에게 AI 투자가 비즈니스 성장에 필수적임을 시사하며, 투자자들에게는 관련 산업의 성장 잠재력을 보여준다.",
+          "url": "https://news.google.com/rss/articles/CBMijwJBVV95cUxNRk5Lb05Cem84aXRDMEo0QmJONWUxZ3JYUnFqRFdfLXI1SWVKS0dkTXllTE9fb0ZRSWNITjMtdU9fUHBrWG01Um5fcHM2ekE1RnhBYkd4S3paMTJNOHRacVdiQU1yYzJ1YnQ3YTZEVU04dG5MQVFLbmNjVHk1N0Y4clpSY0VLWjdJTmFlaC1lRWdtR3VuQzRhN1pTdjVpaVE3ZFlQMndZLUExV1ZSTHpoVEVVVnJzOHB4cFM1TW5WaHQwWkNlYVl0dXZlYnM0azI1RzBQVkxpVEozZUh4RWgweTNYR3M4Q3dJdDY1YmJJaEtEWkVGOXBqMUxGSF96M2wyQmJKYlN1dElTLWw3Q2JZ?oc=5",
+          "source_name": "Google News: agentic AI business automation",
+          "published_at": "2026-04-07T13:02:00+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "3ca9e537d8bc",
+          "title": "아보링고, 50개 교육기관과 파트너십 체결…에이전틱 AI 교육 본격화",
+          "summary_ko": "글로벌 에듀테크 기업 아보랩스가 그들의 에이전틱 AI 기반 언어 학습 플랫폼 '아보링고'를 통해 국내 50개 이상의 교육기관과 파트너십을 맺었다. 이는 개인화된 언어 학습 경로 설계와 실용적인 언어 습득 능력을 제공함으로써, 전통적인 언어 학습 방식에서 디지털 혁신을 가져올 중요성을 강조한다. 기업 CEO와 투자자에게는 AI 기반 교육 솔루션의 성장 잠재력과 시장 진입에 대한 고려사항, 의료 IT 전문가들에게는 언어 학습 분야에서도 AI 활용이 확대되고 있음을 보여주는 사례로 주목받을 것이다.",
+          "url": "https://www.aitimes.kr/news/articleView.html?idxno=39442",
+          "source_name": "ì¸ê³µì§ë¥ì ë¬¸",
+          "published_at": "2026-04-07T11:22:59+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "c6f6ea597eee",
+          "title": "AI Agents Force Rethink of SaaS Pricing and Improve Customer Experiences - PR Newswire",
+          "summary_ko": "인공지능(AI) 에이전트의 발달로 소프트웨어-as-a-Service(SaaS) 산업에서 가격 책정 전략 재고와 고객 경험 향상이 이루어지고 있다. 이 변화는 기업들이 AI를 통한 효율성 개선과 고객 만족도 증대에 주목해야 함을 시사한다. 기업 CEO와 투자자에게는 새로운 비즈니스 모델 탐색의 필요성을, 의료 IT 전문가에게는 AI 기술 도입으로 인한 서비스 품질 개선 방안을 고려할 것을 제안한다.",
+          "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNMnN3dkFVcS10cWVkRDJERDNWX2w1QVVuajJmVUI0ZUZ3bVJqSjhWVHlNRVJvcVVWRHgxRm9CZnNlUXFQZG5JN081ejJrSUpRa3h5aVVhSUZSQjJEMHRaNWJpLVl1Z0FpRklDTVhQLTItN1FrMDF3V2pvalhlYURsa2NRbVNXbzQwb3dZTEhRU3FUcWZXaEJzLWNVVHpuNTczX1BadjduSWt4QzJGeXVfcFdSMENhQ1R3QjVKbkVxRkQ5aUxGQUJJ?oc=5",
+          "source_name": "Google News: agentic AI business automation",
+          "published_at": "2026-04-06T19:10:00+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "f4f3330bead8",
+          "title": "NeuBird AI Raises $19.3 Million To Scale Agentic AI - National Today",
+          "summary_ko": "뉴버드 AI는 에이전트 기반 인공지능(Agentic AI)의 규모를 확장하기 위해 1억 9300만 달러(약 2조 4000억 원)의 투자를 유치했다. 이 회사는 사용자가 직접적으로 명령하지 않아도 환경을 이해하고 스스로 작업을 수행할 수 있는 AI 기술 개발에 주력하고 있다. 이번 투자로 인해 기업 CEO와 투자자들은 에이전트 기반 AI의 잠재력을 평가하고 이를 활용한 비즈니스 모델 구축에 대한 고려가 필요함을 인식해야 한다.",
+          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPSXBnbHQwdWNkMWUxTUY3bUg3enZQaXVaalFTMFlXOHpFSnYyUDVmZVpHWURpdWhfVDdyckZ5N3VEZEJCTmtNUnhZaFRselN4UkkxdUpLZnRMOUkyaWVOblBiOHh1OFlacW1EcXlCbUgwdkZ1VVJoRXA2RmVKV1E4SlBLYjVva2lBVEFWbndfT0pReWw1MlRpRE91ZUlaY0pGTUZnMW1wdFBsWU1ERl9kRHJrUQ?oc=5",
+          "source_name": "Google News: agentic AI business automation",
+          "published_at": "2026-04-06T15:49:55+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "6c7a52aa7b69",
+          "title": "VIDA IPO News - Micro-cap AI agent developer VIDA Global files for a $16 million IPO - renaissancecapital.com",
+          "summary_ko": "미니어처급 인공지능 개발업체인 VIDA 글로벌이 1억 6000만 달러 규모의 상장(IPO)을 신청했다. 이는 AI 기술 분야에서 새로운 투자 기회를 제공하며, 특히 AI 산업의 성장을 반영한다. 이 소식은 기업 CEO와 투자자들에게 인공지능 시장의 잠재력을 평가하고 관련 업체에 대한 투자를 검토할 것을 권고한다.",
+          "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPSS1SM1RkdVlSeGVpeWw2VjJPeFRRbjBrWmxROThZRjhfVjNWbXJnSEVjXzhfazljZGlKRWQ1V1gyUkVTUGxHanV0YlhPUDVlY1BlWmRlbUVveVVCNHVlOHhnV3ktdzdKNGZaY1pzeE52LXFkZGp5aTg2Qm1udjBYU1FESXhmc2tFeXphWEdXZ0NnRFc0aXdPdHp1UTNDTnVzOUZGWXlvbDV1ZEcxRV82bVU2NFF6SU9Oay1Gd0s4REpDcGFR?oc=5",
+          "source_name": "Google News: AI agent enterprise workflow",
+          "published_at": "2026-04-06T04:00:00+00:00",
+          "section": "agentic-ai"
+        },
+        {
+          "id": "b73c31696dbb",
+          "title": "Oracle Expands AI Agent Studio With New Agentic Applications Builder And Workflow Tools - Pulse 2.0",
+          "summary_ko": "오라클이 인공지능 에이전트 스튜디오를 확장하여 새로운 아젠틱 애플리케이션 빌더와 워크플로 도구인 Pulse 2.0을 출시했다. 이 업데이트는 기업들이 AI 기반의 복잡한 업무 자동화를 더 쉽게 수행할 수 있게 해준다. 이 새로운 도구들은 기업 CEO와 투자자들에게 디지털 혁신과 효율성을 높이는 방안을 제공하며, 의료 IT 전문가들에게는 AI 기반의 복잡한 워크플로를 쉽게 구축하고 관리할 수 있는 새로운 가능성을 제시한다.",
+          "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQSVJVb1BVUUJjUFkxNXViX0JsRFRrX2FXSlZqUEVwTkh2em5qX1pMTkVkQjlLaFdNN1RQYUpzaHh5aUh0bVNBeURNd3lVT29jMWVEUi1aajlPSGtNM1BBcEV6cXRFMGxKdTFjVzlZenBvUzBGQVBjbUJmQmw4WnNRNWhCdTJEUURkbFFWYVFlZ2NYcnB6eFFTaG1RRmc2VXpsSUQzRkxxTVg1VTTSAbABQVVfeXFMTzh3VWVJazVTRDE1eEctWVZrQ0RZQ0lTQlJsUllDendENFloY213bXBjZXM1TXJvWUh5Tk5pYkRzMUwyVmpWX0VrRUdVMm9JdWVFZmpvdXNsZDNMcjF0NnBMTUlHSEM1YnFldnBuSkoyRWRQMGI1NGdHNFhvSGxXMXduRTZwcm8zbnhWWlNKNGswWFF5dDhPOTZpbWtNdHdwbm9fdkNTM3pfeU5OVTJJVEE?oc=5",
+          "source_name": "Google News: AI agent enterprise workflow",
+          "published_at": "2026-04-05T20:59:37+00:00",
+          "section": "agentic-ai"
+        },
         {
           "id": "4322f6466e17",
           "title": "섀도우 AI 해법, 킬로의 혁신이 가져올 변화 - 유스연합",
@@ -142,8 +259,44 @@
     {
       "id": "epic-ai",
       "name": "EPIC AI",
-      "description": "Epic Systems AI 전략 벤치마크, 국내외 의료 IT 혁신",
+      "description": "Epic Systems AI ì ëµ ë²¤ì¹ë§í¬, êµ­ë´ì¸ ìë£ IT íì ",
       "articles": [
+        {
+          "id": "ce83c521bafa",
+          "title": "식약처·심평원·NECA, 분절 끝내고 ‘의료기술 통합 평가’ 구축 필요",
+          "summary_ko": "식품의약품안전처, 한국보건의료연구원(NECA), 건강보험심사평가원 간 의료기술 평가 과정이 분절되어 있어 개선 필요성이 제기되었다. 각 기관별로 평가 관점이 다르고 연계성이 부족하다는 문제점을 지적하며, 의료기술의 신속한 시장 진입을 위한 통합 평가체계 구축이 중요하다고 강조했다. 이는 의료 IT 전문가들에게 새로운 평가 체계 개발 및 관련 정책 변화에 대한 주목할 만한 기회를 제공한다.",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3002642",
+          "source_name": "ìíì ë¬¸",
+          "published_at": "2026-04-08T10:43:12+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "4ffed3fbb1a4",
+          "title": "딥노이드, 멀티모달 기반 의료 AI 파운데이션 모델 개발 출사표",
+          "summary_ko": "딥노이드가 과학기술정보통신부의 '첨단 GPU 활용 지원 사업'에 선정되어 의료 AI 파운데이션 모델인 'MedZero-32B' 개발을 본격화한다. 이 프로젝트는 대규모 GPU 서버를 통해 멀티모달 기반의 고성능 의료 인공지능 모델을 구축하는 데 중점을 두고 있어, 향후 의료 분야에서 AI 활용이 더욱 활발해질 것으로 예상된다. 이 연구 성과는 의료 IT 전문가와 기업 CEO들에게 새로운 기술 동향 및 투자 가능성을 제공할 것이다.",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3002673",
+          "source_name": "ìíì ë¬¸",
+          "published_at": "2026-04-08T10:41:52+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "f2e868a83a83",
+          "title": "의약품심사소통단 확대...신약 품질 심사 본격화",
+          "summary_ko": "식품의약품안전처는 제약업계와의 상시 소통 채널인 '의약품심사소통단(CHORUS)'을 확대하여 신약 품질 심사를 강화한다. 이는 AI 기반 신약 개발과 첨단 제조기술의 발전에 대응하기 위한 조치로, 민관 협력으로 허가 기준을 정비하고 심사 효율성을 높이는 것이 중요하다. 이 변화는 기업 CEO와 투자자에게 신약 개발과 허가 과정의 예측 가능성이 증대됨을 시사하며, 의료 IT 전문가는 이를 통해 규제 환경 변화를 주목해야 한다.",
+          "url": "https://www.hitnews.co.kr/news/articleView.html?idxno=75257",
+          "source_name": "íí¸ë´ì¤",
+          "published_at": "2026-04-08T10:06:09+00:00",
+          "section": "epic-ai"
+        },
+        {
+          "id": "0d2f7b55e37a",
+          "title": "삼성바이오에피스, 제약 바이오 특화 AI 전문가 양성 추진",
+          "summary_ko": "삼성바이오에피스가 제약 바이오 업종 특화 인공지능(AI) 전문가 양성을 위한 교육을 실시한다. 이번 교육은 AI를 단순 도구가 아닌 핵심 기술로 내재화하여 글로벌 경쟁력을 강화하기 위함이다. 이는 의료 IT 분야에서 AI 활용 능력 향상이 중요하다는 점을 시사하며, 이를 통해 회사는 업무 효율성을 극대화하고 차별화된 기술력을 확보할 수 있을 것으로 보인다.",
+          "url": "https://www.hitnews.co.kr/news/articleView.html?idxno=75252",
+          "source_name": "íí¸ë´ì¤",
+          "published_at": "2026-04-08T08:41:59+00:00",
+          "section": "epic-ai"
+        },
         {
           "id": "62e1de32c341",
           "title": "25 Healthcare AI Use Cases with Examples - AIMultiple",
@@ -349,8 +502,26 @@
     {
       "id": "financial-macro",
       "name": "Financial Macro",
-      "description": "S&P500·Nasdaq·미국 장기채 관련 매크로 동향 및 자산배분 인사이트",
+      "description": "S&P500Â·NasdaqÂ·ë¯¸êµ­ ì¥ê¸°ì± ê´ë ¨ ë§¤í¬ë¡ ëí¥ ë° ìì°ë°°ë¶ ì¸ì¬ì´í¸",
       "articles": [
+        {
+          "id": "699ad94f9846",
+          "title": "Stock futures surge, oil prices slide as Trump announces two-week cease-fire with Iran",
+          "summary_ko": "도널드 트럼프 대통령은 미국의 이란에 대한 폭격 계획을 연기하고 양국 협상을 위한 더 많은 시간을 확보하기로 하는 2주간의 휴전 합의를 발표함으로써 미국 주식선물이 급등하고 원유 가격이 하락했습니다. 이는 미-이란 갈등 완화가 글로벌 경제와 에너지 시장에 긍정적인 영향을 미칠 수 있음을 보여줍니다. 기업 CEO와 투자자에게는 지정학적 불확실성이 감소함으로써 국제 무역과 재무 계획이 안정될 가능성을 주시할 필요가 있습니다.",
+          "url": "https://www.marketwatch.com/story/stock-futures-surge-oil-prices-slides-as-trump-announces-2-week-cease-fire-with-iran-5609c7e9?mod=mw_rss_topstories",
+          "source_name": "MarketWatch Top Stories",
+          "published_at": "2026-04-08T00:22:00+00:00",
+          "section": "financial-macro"
+        },
+        {
+          "id": "1972b929bcc4",
+          "title": "The Iran conflict isn’t panicking investors — yet. That’s about to change.",
+          "summary_ko": "이라니스의 긴장이 투자자들을 아직까지 크게 불안하게 만들지는 않았지만 곧 변화할 것으로 예상된다. 신용 스프레드가 확대되지 않고, 원유선물곡선도 장기 공급충격을 나타내지 않으며, S&P 500 지수도 아직까지 조정을 받지 않았다. 그러나 이란과의 충돌이 금융시장에 미치는 영향이 증가할 가능성이 있어 향후 주식 및 원유 시장 동향에 대한 주의가 필요하다.",
+          "url": "https://www.marketwatch.com/story/the-iran-conflict-isnt-panicking-investors-yet-thats-about-to-change-e7f51dad?mod=mw_rss_topstories",
+          "source_name": "MarketWatch Top Stories",
+          "published_at": "2026-04-07T22:13:00+00:00",
+          "section": "financial-macro"
+        },
         {
           "id": "231f95e65995",
           "title": "These charts show the cracks in the stock market are widening",
