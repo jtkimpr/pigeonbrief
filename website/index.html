@@ -6,6 +6,9 @@
   <title>PigeonBrief</title>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <link rel="stylesheet" href="assets/style.css?v=9">
+  <!-- 로그인 이력이 있으면 랜딩을 즉시 숨김 (flash 방지) -->
+  <script>if (localStorage.getItem('pb_loggedin') === '1') document.documentElement.classList.add('pb-returning');</script>
+  <style>.pb-returning #landing { display: none !important; }</style>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -159,27 +162,23 @@
     window.addEventListener('load', async () => {
       await window.Clerk.load();
       if (!window.Clerk.user) {
-        // 비로그인: 랜딩 페이지 유지
+        // 비로그인: 플래그 제거 후 랜딩 표시
+        localStorage.removeItem('pb_loggedin');
+        document.documentElement.classList.remove('pb-returning');
+        document.getElementById('landing').style.display = '';
         return;
       }
-      // 로그인 상태: 랜딩 fade out → 앱 fade in
-      const landing = document.getElementById('landing');
-      const app = document.getElementById('app');
-      landing.style.transition = 'opacity 0.15s';
-      landing.style.opacity = '0';
-      setTimeout(() => {
-        landing.style.display = 'none';
-        app.style.opacity = '0';
-        app.style.display = '';
-        app.style.transition = 'opacity 0.25s';
-        requestAnimationFrame(() => requestAnimationFrame(() => { app.style.opacity = '1'; }));
-      }, 150);
+      // 로그인 확인: 플래그 저장 후 앱 표시
+      localStorage.setItem('pb_loggedin', '1');
+      document.getElementById('landing').style.display = 'none';
+      document.getElementById('app').style.display = '';
       // 로그아웃 버튼 표시
       const btnSignout = document.getElementById('btn-signout');
       btnSignout.style.display = '';
-      btnSignout.onclick = () => window.Clerk.signOut().then(() => {
-        window.location.href = '/sign-in.html';
-      });
+      btnSignout.onclick = () => {
+        localStorage.removeItem('pb_loggedin');
+        window.Clerk.signOut().then(() => { window.location.href = '/sign-in.html'; });
+      };
       // 앱 초기화
       initApp();
     });
