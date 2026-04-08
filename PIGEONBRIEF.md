@@ -1,311 +1,253 @@
-# PigeonBrief — 프로젝트 구축 기록
+# PigeonBrief — 프로젝트 상세 문서
 
-개인 뉴스 수집·요약·표시 시스템. 매일 자동으로 RSS와 Google News에서 관심 주제별 뉴스를 수집하고, Claude AI가 한국어로 요약해 정적 웹사이트에 게시한다.
+RSS·Google News에서 주제별 뉴스를 수집해 로컬 LLM으로 필터링·요약, 회원제 웹사이트로 자동 발행하는 개인 뉴스 인텔리전스 시스템.
 
 ---
 
 ## 아키텍처 개요
 
 ```
-launchd (매일 1회)
-  └─ scripts/run_pipeline.sh
-       └─ pipeline.py
-            ├─ git pull (최신 설정 반영)
-            ├─ collectors/rss.py      ← RSS 피드 수집
-            ├─ collectors/keyword.py  ← Google News 키워드 수집
-            ├─ processor/dedup.py     ← URL/제목 중복 제거 (SQLite)
-            ├─ processor/claude.py    ← Claude AI 필터링 + 한국어 요약
-            └─ generator/build_site.py → website/data/articles.json
-                                              └─ git push → Vercel 자동 배포
+[사용자 브라우저]
+  ↕ Clerk 인증
+  ↕ 기사·설정 API 호출
+[Vercel — 프론트엔드 (pigeonbrief.vercel.app)]
+  ↕
+[Cloudflare Tunnel — api.pigeonbrief.com]
+  ↕
+[Mac Mini M4 — localhost:8000]
+  ├── FastAPI 백엔드
+  │     ├── GET  /api/articles        사용자별 기사 목록
+  │     ├── GET  /api/settings        내 섹션/RSS/키워드 조회
+  │     ├── POST /api/settings/sections   섹션 추가
+  │     ├── PUT  /api/settings/sections/{id}
+  │     ├── DELETE /api/settings/sections/{id}
+  │     ├── POST /api/settings/rss    RSS 소스 추가
+  │     ├── DELETE /api/settings/rss/{id}
+  │     ├── POST /api/settings/keywords
+  │     └── DELETE /api/settings/keywords/{id}
+  ├── SQLite DB (data/pigeonbrief.db)
+  │     ├── users
+  │     ├── sections     (사용자별)
+  │     ├── rss_sources  (섹션별)
+  │     ├── keywords     (섹션별)
+  │     ├── articles     (사용자별)
+  │     └── seen_urls    (중복 방지, 사용자별)
+  └── 파이프라인 (launchd 매일 자동 실행)
+        ├── git pull
+        ├── collectors/rss.py       RSS 수집
+        ├── collectors/keyword.py   Google News 수집
+        ├── processor/dedup.py      중복 제거
+        ├── processor/claude.py     Ollama 필터링 + 한국어 요약
+        └── generator/build_site.py → DB 저장 + git push → Vercel 배포
 ```
-
-브라우저에서 섹션/RSS/키워드 설정 → GitHub API로 `config/sections.json` 직접 저장 → 다음 파이프라인 실행 시 `git pull`로 반영.
 
 ---
 
 ## 디렉터리 구조
 
 ```
-news-intelligence/
-├── pipeline.py                  # 메인 실행 스크립트
-├── config/
-│   ├── settings.yaml            # 파이프라인 설정 (API키 경로, dedup DB 경로 등)
-│   └── sections.json            # 섹션 정의 (브라우저에서 편집 가능)
+pigeonbrief/
+├── pipeline.py                  # 메인 파이프라인 실행 스크립트
+├── backend/                     # FastAPI 백엔드
+│   ├── main.py                  # 앱 진입점, CORS 설정
+│   ├── database.py              # SQLite 초기화 및 연결
+│   ├── auth.py                  # Clerk JWT 검증
+│   └── routers/
+│       ├── settings.py          # 섹션/RSS/키워드 CRUD API
+│       └── articles.py          # 기사 조회 API
 ├── collectors/
-│   ├── rss.py                   # RSS 피드 수집
-│   └── keyword.py               # Google News 키워드 수집 (gnews 라이브러리)
+│   ├── rss.py                   # RSS 피드 수집 (feedparser)
+│   └── keyword.py               # Google News 키워드 수집
 ├── processor/
-│   ├── dedup.py                 # SQLite 기반 URL 히스토리 중복 제거
-│   └── claude.py                # Claude API 필터링 + 한국어 요약
+│   ├── dedup.py                 # SQLite 기반 URL·제목 중복 제거
+│   └── claude.py                # Ollama(qwen2.5:14b) 필터링 + 한국어 요약
 ├── generator/
-│   └── build_site.py            # articles.json 생성 (7일 누적 방식)
+│   └── build_site.py            # 기사 데이터 생성 및 저장
+├── config/
+│   ├── settings.yaml            # 파이프라인 전역 설정
+│   └── sections.json            # 기본 섹션 정의 (파이프라인용 fallback)
 ├── scripts/
-│   └── run_pipeline.sh          # launchd에서 호출하는 래퍼 스크립트
+│   ├── run_pipeline.sh          # launchd 파이프라인 실행 스크립트
+│   └── run_backend.sh           # 백엔드 수동 실행 스크립트
+├── website/                     # Vercel 배포 대상
+│   ├── index.html               # 메인 화면 (Clerk 인증 체크 포함)
+│   ├── sign-in.html             # 로그인 페이지 (Clerk UI)
+│   ├── settings.html            # 사용자 설정 페이지 (섹션/RSS/키워드)
+│   └── assets/
+│       ├── app.js               # 메인 프론트엔드 로직 (API 호출 방식)
+│       ├── settings.js          # 설정 패널 UI
+│       └── style.css            # 스타일
 ├── data/
-│   └── history.db               # SQLite: 수집 이력 (중복 제거용)
-└── website/                     # Vercel 배포 대상
-    ├── index.html
-    ├── data/
-    │   ├── articles.json        # 파이프라인이 생성하는 뉴스 데이터
-    │   └── site_config.json     # 브라우저 설정 UI 인증 정보
-    └── assets/
-        ├── app.js               # 메인 프론트엔드 로직
-        ├── settings.js          # 설정 패널 UI
-        └── style.css            # 스타일
+│   └── pigeonbrief.db           # SQLite DB (사용자·기사·설정 통합)
+├── .env                         # 환경변수 (gitignore됨)
+└── requirements.txt             # Python 의존성
 ```
 
 ---
 
-## 핵심 설정 파일
+## 환경변수 (.env)
 
-### `config/settings.yaml`
+```env
+# Clerk 인증
+CLERK_PUBLISHABLE_KEY=pk_test_...
+CLERK_SECRET_KEY=sk_test_...
+CLERK_JWKS_URL=https://becoming-salmon-61.clerk.accounts.dev/.well-known/jwks.json
+```
+
+---
+
+## 인프라 설정
+
+### Cloudflare Tunnel
+- 터널명: `pigeonbrief`
+- 터널 ID: `a35624e3-6d74-40ae-b253-ff5f09acb696`
+- 설정 파일: `~/.cloudflared/config.yml`
+- 연결: `api.pigeonbrief.com` → `localhost:8000`
+- 자동 실행: `brew services start cloudflared`
+
+### launchd 서비스
+| 서비스 | plist 파일 | 역할 |
+|--------|-----------|------|
+| 파이프라인 | `com.pigeonbrief.pipeline.plist` | 매일 자동 수집·요약 |
+| 백엔드 | `com.pigeonbrief.backend.plist` | FastAPI 서버 상시 실행 |
+| Cloudflare | `homebrew.mxcl.cloudflared` | 터널 상시 유지 |
+
+### Clerk
+- 애플리케이션명: PigeonBrief
+- 프론트엔드 API: `becoming-salmon-61.clerk.accounts.dev`
+- 사용자 관리: [clerk.com 대시보드](https://clerk.com) → Users 메뉴
+- 신규 사용자 초대: Configure → Restrictions → Allowlist에 이메일 추가
+
+---
+
+## LLM 설정 (processor/claude.py)
+
+Claude API 대신 로컬 Ollama + qwen2.5:14b 사용.
 
 ```yaml
-anthropic:
-  api_key_file: ~/.anthropic_key   # Claude API 키 파일 경로
-  model: claude-haiku-4-5-20251001 # 요약에 사용할 모델
-
-dedup:
-  url_history_db: data/history.db
-  title_similarity_threshold: 0.85
-
-site:
-  max_age_days: 7                  # 기사 보존 기간 (일)
-
-git:
-  auto_push: true
+# config/settings.yaml
+llm:
+  model: qwen2.5:14b
+  base_url: http://localhost:11434/v1
+  max_input_tokens: 1000
+  min_relevance_score: 0.6
 ```
 
-### `config/sections.json`
-
-```json
-{
-  "sections": [
-    {
-      "id": "agentic-ai",
-      "name": "Agentic AI",
-      "description": "AI 에이전트·LLM 관련 뉴스",
-      "enabled": true,
-      "channel2_rss": {
-        "sources": [
-          { "name": "TechCrunch AI", "url": "https://techcrunch.com/feed/" }
-        ]
-      },
-      "channel3_keywords": {
-        "max_age_hours": 24,
-        "queries": [
-          "AI agent OR agentic AI",
-          "LLM reasoning NOT hype"
-        ]
-      }
-    }
-  ]
-}
-```
-
-- `channel2_rss.sources`: RSS 피드 목록 (name + url)
-- `channel3_keywords.queries`: Google News 검색 쿼리 (AND/OR/NOT 지원)
-- `enabled: false`이면 파이프라인에서 건너뜀
-
-### `website/data/site_config.json`
-
-```json
-{
-  "password_hash": "c03084ab61b5c78401b61cf53278714b0b29e69bcec1b36e9c22afbddcbd5269",
-  "github_repo": "jtkimpr/news-intelligence",
-  "github_branch": "main",
-  "config_path": "config/sections.json"
-}
-```
-
-- `password_hash`: SHA-256 해시 (기본 비밀번호: `news2024`)
-- 브라우저 설정 UI 로그인 시 검증
-- GitHub PAT는 `localStorage('github_pat')`에 저장 (재방문 시 재입력 불필요)
+- 1단계: 관련성 필터링 (JSON 배열 반환, `response_format: json_object`)
+- 2단계: 한국어 3~4문장 요약
+- API 비용 없음, 속도: 기사당 약 20~30초
 
 ---
 
 ## 파이프라인 상세
 
-### 1단계: 수집
+### 현재 상태 (2026-04-08 기준)
+파이프라인은 아직 **YAML 파일 기반**으로 동작. DB 기반 사용자별 수집으로의 전환이 남은 작업.
 
-**RSS (`collectors/rss.py`)**
-- 각 섹션의 `channel2_rss.sources`를 feedparser로 파싱
-- `published_parsed` → `published_at` (UTC ISO)
-
-**키워드 (`collectors/keyword.py`)**
-- gnews 라이브러리로 Google News 검색
-- `max_age_hours` 기준 최근 기사만 수집
-
-### 2단계: 중복 제거 (`processor/dedup.py`)
-
-1. `history.db`에 기 수집된 URL 제거
-2. 동일 URL 중복 제거
-3. 제목 유사도(difflib) 기반 중복 제거 (`threshold: 0.85`)
-
-`dedup.mark_as_seen()`: 사이트 JSON 생성 성공 후에만 DB에 기록 (실패 시 다음 실행에서 재처리)
-
-### 3단계: Claude 처리 (`processor/claude.py`)
-
-- **필터링**: 각 섹션 description 기준으로 관련 없는 기사 제거
-- **요약**: 한국어 3~4문장 요약 생성
-  - 입력: 본문 최대 1000자
-  - 출력: 최대 350 토큰
-  - 배치 처리 (API 비용 최적화)
-
-### 4단계: 사이트 JSON 생성 (`generator/build_site.py`)
-
-- 기존 `articles.json` 로드 → 새 기사와 병합
-- `max_age_days`(기본 7일)보다 오래된 기사 자동 삭제
-- 섹션별로 기사 분류 후 저장
-
-출력 형식:
-```json
-{
-  "generated_at": "2026-04-05T09:00:00Z",
-  "total_articles": 42,
-  "sections": [
-    {
-      "id": "agentic-ai",
-      "name": "Agentic AI",
-      "articles": [
-        {
-          "id": "sha256_prefix",
-          "title": "...",
-          "url": "https://...",
-          "source_name": "TechCrunch",
-          "published_at": "2026-04-05T07:30:00Z",
-          "summary_ko": "한국어 요약..."
-        }
-      ]
-    }
-  ]
-}
+### 현재 흐름
+```
+config/sections.json (YAML) → 수집 → Ollama 필터링·요약 → articles.json → git push → Vercel
 ```
 
-### 5단계: Git Push → Vercel 배포
-
-```python
-git add website/data/articles.json
-git commit -m "daily update: 2026-04-05"
-git push  # → Vercel이 자동 감지하여 배포
+### 목표 흐름 (미완성 — 남은 작업 1)
 ```
-
-**Vercel 프로젝트 설정 (pigeonbrief 레포):**
-- Output Directory: `website` (빌드 커맨드 없음, 정적 파일 직접 서빙)
-- `website/` 폴더 전체가 사이트 루트로 배포됨
+DB (사용자별 sections/rss/keywords) → 사용자별 수집 → Ollama 필터링·요약 → DB 저장 → git push
+```
 
 ---
 
 ## 프론트엔드
 
-### 탭 구조
+### 인증 흐름
+1. `index.html` 접속 → Clerk SDK 로드
+2. 로그인 안 된 경우 → `sign-in.html`로 자동 이동
+3. 로그인 완료 → `initApp()` 호출 → 백엔드 API에서 기사 로드
+4. 헤더 로그아웃 버튼(→ 아이콘) → `Clerk.signOut()` → `sign-in.html`
 
-```
-[ Today ] [ Read Later ] | [ Agentic AI ] [ Epic AI ] [ Financial ] [ + ]
-  고정 탭 (파란색)        구분선   주제별 탭 (검정, 드래그 가능)   새 섹션 추가
-```
+### 설정 흐름 (settings.html)
+- 헤더 ⚙️ 버튼 클릭 → `settings.html` 이동
+- 섹션 추가/삭제, RSS 소스 추가/삭제, 키워드 추가/삭제
+- 변경사항 즉시 API 호출로 DB 저장
 
-- **Today**: 최근 24시간 기사 (published_at 기준)
-- **Read Later**: 사용자가 🔖로 저장한 기사 (비어 있을 때 안내 문구 표시)
-- **주제별 탭**: 드래그앤드롭으로 순서 변경 가능
-
-### 카드 UI
-
-- **요약 텍스트**: `# 요약` 등 마크다운 헤더 접두어 자동 제거 (`cleanSummary()`)
-- **요약 높이**: `line-clamp: 4`로 고정해 카드 높이 균일화
-- **외부 링크**: 우상단 SVG 아이콘 버튼으로 표시, 클릭 시 읽음 처리 (`ni_read`)
-- **읽음 상태**: 제목 색이 회색(`#aaa`)으로 변경 (`localStorage 'ni_read'`)
-
-### 카드 액션 (localStorage 기반)
-
-| 버튼 | 동작 | 저장 키 |
-|------|------|---------|
-| ♥ 좋아요 | 토글 | `ni_liked` (object) |
-| 🔖 나중에 읽기 | 토글 | `ni_read_later` (object) |
-| ✕ 삭제 | 즉시 숨김 | `ni_deleted` (array) |
-
-- 액션 버튼: 항상 살짝 보임 (opacity 0.35), 호버 시 완전 표시
-- 좋아요한 기사: 7일 자동삭제 시 localStorage에 전체 데이터 보존
-- Read Later 탭에서 🔖 해제 시 목록에서 제거
-
-### 설정 UI
-
-Google Material Design SVG 기어 아이콘 버튼 → 현재 활성 탭의 섹션 설정 오픈 (Today/Read Later 탭에서는 섹션 목록)
-
-**인증 흐름:**
-1. SHA-256 비밀번호 검증 (`sessionStorage`로 세션 중 유지)
-2. GitHub PAT 입력 (`localStorage('github_pat')`에 저장, 재방문 시 생략)
-3. 섹션 편집 → GitHub API PUT으로 `config/sections.json` 저장
-
-**섹션 편집:**
-- 섹션명, RSS 소스(이름+URL) 추가/삭제
-- 키워드 쿼리 추가/삭제 (AND/OR/NOT 사용 가능)
-- 섹션 순서: 드래그앤드롭 → 자동 저장
+### 기사 로드
+- `app.js`의 `loadData()`: `GET https://api.pigeonbrief.com/api/articles` (Bearer 토큰)
+- 기존 `articles.json` 파일 방식 → API 방식으로 전환 완료
 
 ---
 
-## launchd 설정
+## 남은 작업
 
-`~/Library/LaunchAgents/com.pigeonbrief.pipeline.plist` 예시:
+### 1. 파이프라인 DB 전환 (미완료)
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "...">
-<plist version="1.0">
-<dict>
-  <key>Label</key>
-  <string>com.pigeonbrief.pipeline</string>
-  <key>ProgramArguments</key>
-  <array>
-    <string>/Users/jintaekim/news-intelligence/scripts/run_pipeline.sh</string>
-  </array>
-  <key>StartCalendarInterval</key>
-  <dict>
-    <key>Hour</key>
-    <integer>8</integer>
-    <key>Minute</key>
-    <integer>0</integer>
-  </dict>
-  <key>StandardOutPath</key>
-  <string>/Users/jintaekim/news-intelligence/logs/pipeline.log</string>
-  <key>StandardErrorPath</key>
-  <string>/Users/jintaekim/news-intelligence/logs/pipeline.err</string>
-</dict>
-</plist>
-```
+**목표**: `config/sections.json` (YAML) 대신 SQLite DB의 사용자별 설정을 읽어 수집
 
----
+**변경 필요 파일:**
+- `pipeline.py` — 사용자 루프 추가 (DB에서 전체 사용자 목록 조회 → 사용자별 실행)
+- `collectors/rss.py` — `section` 파라미터를 DB rows 형태로 수신하도록 수정
+- `collectors/keyword.py` — 동일
+- `processor/dedup.py` — `seen_urls` 테이블을 사용자별로 분리
+- `generator/build_site.py` — `articles.json` 생성 대신 DB에 저장
 
-## 비밀번호 변경 방법
-
+**구현 방향:**
 ```python
-import hashlib
-new_hash = hashlib.sha256("새비밀번호".encode()).hexdigest()
-print(new_hash)
+# pipeline.py 변경 흐름
+users = db.get_all_users()
+for user in users:
+    sections = db.get_sections(user.id)
+    for section in sections:
+        articles = collect(section.rss_sources, section.keywords)
+        deduped = dedup(articles, user.id)
+        filtered = llm_filter(deduped, section)
+        db.save_articles(filtered, user.id, section.id)
 ```
 
-결과를 `website/data/site_config.json`의 `password_hash`에 저장.
+### 2. Clerk Allowlist 설정 (미완료)
+
+신규 사용자가 가입하려면 Clerk 대시보드에서 이메일을 허용 목록에 추가해야 함.
+
+**방법:**
+1. [clerk.com](https://clerk.com) 로그인
+2. PigeonBrief 프로젝트 선택
+3. Configure → Restrictions → Allowlist
+4. 초대할 사람의 이메일 추가
 
 ---
 
 ## 주요 변경 이력
 
+### 2026-04-08
+
+**LLM 교체: Claude API → Ollama 로컬 LLM**
+- `processor/claude.py`: `anthropic` → `openai` (Ollama OpenAI 호환 API)
+- 모델: `qwen2.5:14b` (맥미니 로컬 설치)
+- `requirements.txt`: `anthropic` → `openai>=1.0.0`
+- `config/settings.yaml`: `claude:` → `llm:` 섹션으로 변경
+- Python 3.13 설치 (Homebrew), `.venv` 생성
+
+**멀티유저 인증 및 개인화 시스템 추가**
+- Cloudflare Tunnel 설치·설정 (`api.pigeonbrief.com`)
+- `pigeonbrief.com` 도메인 Cloudflare에서 구매
+- FastAPI 백엔드 신규 개발 (`backend/`)
+  - SQLite DB 설계 (users, sections, rss_sources, keywords, articles, seen_urls)
+  - Clerk JWT 검증 (`auth.py`)
+  - 설정 CRUD API (`routers/settings.py`)
+  - 기사 조회 API (`routers/articles.py`)
+- Clerk 인증 연동
+  - `website/sign-in.html` 신규 생성
+  - `website/index.html` Clerk 인증 체크 + 로그아웃 버튼 추가
+  - `website/settings.html` 신규 생성 (섹션/RSS/키워드 관리 UI)
+  - `website/assets/app.js` API 호출 방식으로 전환
+- launchd 서비스 등록 (`com.pigeonbrief.backend.plist`)
+
 ### 2026-04-06
 
 **채널3 키워드 UI 개선 (`settings.js`, `style.css`)**
-- 기존: raw 쿼리 텍스트 입력 (`"AI agent OR LLM -hype"` 직접 타이핑)
-- 변경: 시각적 태그 빌더로 교체
-  - **모두 포함(AND)** / **하나라도(OR)** / **제외(NOT)** 3개 태그 그룹
-  - 각 그룹은 Enter 또는 `,`로 태그 추가, ✕로 삭제
-  - 그룹 간 OR 관계를 구분선으로 명시
-  - 하단 '쿼리' 미리보기로 실제 조합 결과 실시간 확인
-  - `parseQuery()` / `assembleQuery()`로 기존 `sections.json` 데이터 호환 유지
+- 시각적 태그 빌더로 교체 (AND/OR/NOT 그룹)
+- 쿼리 미리보기 실시간 확인
 
 **헤더 디자인 개선 (`index.html`, `style.css`)**
-- 비둘기 SVG 로고 추가 (날개 펼친 심볼릭 실루엣, inline SVG)
-- 폰트 변경: 시스템 기본 → **Libre Baskerville** (Google Fonts, 상업용 무료)
-  - Times New Roman과 유사한 전통 세리프 느낌
-  - 신문 타이틀 스타일로 브랜드 아이덴티티 강화
+- 비둘기 SVG 로고 추가
+- 폰트: Libre Baskerville (Google Fonts)
 
 ---
 
@@ -313,11 +255,11 @@ print(new_hash)
 
 | 결정 | 이유 |
 |------|------|
-| 브라우저 → GitHub API 직접 저장 | 별도 백엔드 서버 불필요, Vercel 정적 호스팅 유지 |
-| articles.json 7일 누적 | 하루치만 저장하면 파이프라인 실패 시 빈 화면; 누적으로 안정성 확보 |
-| PAT를 localStorage에 저장 | 재방문 시 매번 입력하는 불편 해소 |
-| data-action 이벤트 위임 | 카드 제목에 따옴표 포함 시 onclick 인라인 JSON 파싱 오류 방지 |
+| Ollama 로컬 LLM | Claude API 비용 절감, 맥미니 상시 가동 활용 |
+| FastAPI + SQLite | 경량, Python 기반(기존 코드와 통일), 외부 DB 불필요 |
+| Cloudflare Tunnel | 공유기 포트포워딩 불필요, IP 노출 없음, 무료 |
+| Clerk 인증 | 완성된 로그인 UI 제공, 10,000 MAU 무료 |
+| 로그인 장벽 방식 | articles.json URL 보안보다 실용성 우선 (지인 대상 소규모 운영) |
+| 파이프라인 per-user | 사용자별 독립적 설정, 소규모에서 단순함 우선 |
 | dedup mark_as_seen 지연 | 사이트 생성 실패 시 다음 실행에서 재처리 가능하게 |
 | launchd (not cron) | Mac 절전 후 자동 재실행, 로그 통합 관리 |
-| cleanSummary() 전처리 | Claude 요약 결과의 `# 요약` 마크다운 헤더가 카드에 노출되는 문제 방지 |
-| Vercel Output Directory = website | 빌드 스크립트 없이 정적 폴더 직접 서빙, 배포 단순화 |
