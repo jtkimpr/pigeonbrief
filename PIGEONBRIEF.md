@@ -212,7 +212,12 @@ DB (사용자별 sections/rss/keywords)
   - `backend/main.py`: `.env` 로드 블록을 모든 `backend.*` import 위로 이동
   - `backend/auth.py`: `CLERK_JWKS_URL`을 모듈 전역 상수가 아닌 `_get_jwks()` 호출 시점에 `os.environ.get(...)`으로 읽도록 변경 (import 순서 의존성 제거, 재발 방지)
 - 검증: `launchctl kickstart -k` 후 `/health` 200, `/api/articles`(인증 없음) 500 → 401 로 정상화. 브라우저에서도 정상 동작 확인
-- 참고 권장: 향후 `python-dotenv`의 `load_dotenv()`로 교체하면 더 안전
+
+**`.env` 로딩을 `python-dotenv`로 교체 (후속)**
+- 수동 파서(직접 파일 읽어 split)를 `dotenv.load_dotenv()`로 교체
+- `Path(__file__).resolve().parent.parent / ".env"` 절대경로 지정 → cwd 의존성 제거
+- `requirements.txt`에 `python-dotenv>=1.0.0` 추가
+- `.venv`에 설치 후 launchd 재시작, 동일하게 정상 동작 확인
 
 ### 2026-04-08 (5차)
 

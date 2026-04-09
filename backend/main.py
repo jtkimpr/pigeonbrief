@@ -3,16 +3,12 @@ PigeonBrief FastAPI 백엔드
 실행: .venv/bin/uvicorn backend.main:app --host 0.0.0.0 --port 8000
 """
 import os
+from pathlib import Path
 
 # .env 로드 (반드시 backend.* import 보다 먼저 실행되어야 함 — auth.py 등이
-# 모듈 로드 시점에 os.environ을 읽기 때문)
-if os.path.exists('.env'):
-    with open('.env') as f:
-        for line in f:
-            line = line.strip()
-            if line and not line.startswith('#') and '=' in line:
-                k, v = line.split('=', 1)
-                os.environ.setdefault(k.strip(), v.strip().strip('"\''))
+# 모듈 로드 시점에 os.environ을 읽을 가능성이 있기 때문)
+from dotenv import load_dotenv
+load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
