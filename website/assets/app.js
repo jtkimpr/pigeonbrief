@@ -388,7 +388,7 @@ function obSteps(active, total = 5) {
 const wizState = {
   sectionName: '',        // 섹션 탭에 표시될 짧은 이름
   topic: '',              // AI에 전달하는 주제 설명
-  purpose: '',            // 뉴스 수집 목적
+  purposes: new Set(),    // 뉴스 수집 목적 (복수 선택)
   clarificationQuestion: '',
   clarificationAnswer: '',
   keywordSet: null,       // {core_keywords, related_entities, related_concepts, exclude_keywords, recommended_query}
@@ -400,7 +400,7 @@ const wizState = {
 function wizReset() {
   wizState.sectionName = '';
   wizState.topic = '';
-  wizState.purpose = '';
+  wizState.purposes = new Set();
   wizState.clarificationQuestion = '';
   wizState.clarificationAnswer = '';
   wizState.keywordSet = null;
@@ -433,7 +433,7 @@ const OB_PURPOSE_OPTIONS = [
 function showOnboardingWizard() {
   wizReset();
   const purposeBtns = OB_PURPOSE_OPTIONS.map(p =>
-    `<button type="button" class="wiz-purpose-btn" onclick="obTogglePurpose('${escJs(p.value)}')">${escOb(p.label)}</button>`
+    `<button type="button" class="wiz-purpose-btn" data-value="${escOb(p.value)}" onclick="obTogglePurpose('${escJs(p.value)}')">${escOb(p.label)}</button>`
   ).join('');
 
   document.getElementById('card-grid').innerHTML = `
@@ -449,9 +449,16 @@ function showOnboardingWizard() {
       </div>
       <div class="wizard-field">
         <label class="wizard-label">주제 설명 <span class="wizard-optional">AI가 키워드를 추천할 때 참고해요</span></label>
+        <div class="wiz-topic-guide">
+          <span class="wiz-topic-tag">나는 누구</span>
+          <span class="wiz-topic-sep">+</span>
+          <span class="wiz-topic-tag">무슨 목적으로</span>
+          <span class="wiz-topic-sep">+</span>
+          <span class="wiz-topic-tag">무엇을 알고 싶어</span>
+        </div>
         <textarea id="ob-topic" class="wizard-input wizard-textarea"
-          rows="3"
-          placeholder="예: Ubcare처럼 EPIC을 지향하는 의료 소프트웨어 산업 동향"></textarea>
+          rows="4"
+          placeholder="예: 저는 의료 소프트웨어 회사의 대표예요. EPIC처럼 EMR에 AI를 도입해 사업 모델을 확장한 해외 사례를 알고 싶어요."></textarea>
       </div>
       <div class="wizard-field">
         <label class="wizard-label">수집 목적 <span class="wizard-optional">선택</span></label>
@@ -466,10 +473,11 @@ function showOnboardingWizard() {
 }
 
 function obTogglePurpose(value) {
-  wizState.purpose = wizState.purpose === value ? '' : value;
+  if (wizState.purposes.has(value)) wizState.purposes.delete(value);
+  else wizState.purposes.add(value);
   // 버튼 active 상태 갱신
   document.querySelectorAll('.wiz-purpose-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.textContent === value && wizState.purpose === value);
+    btn.classList.toggle('active', wizState.purposes.has(btn.dataset.value));
   });
 }
 
@@ -490,7 +498,8 @@ async function obStep1Submit() {
   }
 
   wizState.sectionName = name;
-  wizState.topic = topic + (wizState.purpose ? `\n\n수집 목적: ${wizState.purpose}` : '');
+  const purposeStr = [...wizState.purposes].join(', ');
+  wizState.topic = topic + (purposeStr ? `\n\n수집 목적: ${purposeStr}` : '');
 
   wizLoading(2, 'AI가 주제를 분석하고 있어요...');
   try {
@@ -643,13 +652,10 @@ function obStep3Render() {
       </div>
 
       <div class="wiz-ai-edit">
-        <label class="wizard-label">✨ AI에게 수정 요청</label>
-        <div class="wizard-field-row">
-          <input id="ob-edit-inst" class="wizard-input"
-            placeholder="예: OpenAI 관련 키워드 추가해줘 / 일반 AI 뉴스 제외"
-            onkeydown="if(event.key==='Enter') obAiEdit()" />
-          <button class="btn-secondary" onclick="obAiEdit()">수정</button>
-        </div>
+        <label class="wizard-label">추가 고려 사항 <span class="wizard-optional">미리보기 실행 시 AI가 키워드에 반영해요</span></label>
+        <textarea id="ob-edit-inst" class="wizard-input wizard-textarea"
+          rows="2"
+          placeholder="예: OpenAI, Anthropic 관련 내용은 제외해줘 / 스타트업 투자 관련 내용도 포함해줘"></textarea>
       </div>
 
       <div id="ob3-error" class="wizard-error" style="display:none"></div>
@@ -721,43 +727,40 @@ function obToggleRss(url) {
   else wizState.selectedRssUrls.add(url);
 }
 
-async function obAiEdit() {
-  const instruction = document.getElementById('ob-edit-inst')?.value.trim();
-  if (!instruction) return;
-  const errEl = document.getElementById('ob3-error');
-  errEl.style.display = 'none';
-  wizLoading(3, 'AI가 수정하고 있어요...');
-  try {
-    const result = await pbApi('POST', '/api/ai/edit-keywords', {
-      current: wizState.keywordSet,
-      instruction,
-    });
-    wizState.keywordSet = result.data;
-    wizState.rssSuggestions = result.rss_suggestions || wizState.rssSuggestions;
-    wizState.selectedCoreKeywords = new Set(wizState.keywordSet.core_keywords || []);
-    // RSS 선택은 유지하되 존재하는 것만
-    const valid = new Set(wizState.rssSuggestions.map(r => r.url));
-    wizState.selectedRssUrls = new Set([...wizState.selectedRssUrls].filter(u => valid.has(u)));
-    if (wizState.selectedRssUrls.size === 0) {
-      wizState.selectedRssUrls = new Set(wizState.rssSuggestions.slice(0, 3).map(r => r.url));
-    }
-    obStep3Render();
-  } catch(e) {
-    obStep3Render();
-    const err = document.getElementById('ob3-error');
-    if (err) { err.textContent = 'AI 수정 실패: ' + e.message; err.style.display = ''; }
-  }
-}
 
 // ─── Step 4: 미리보기 ─────────────────────────────────────────────────────────
 
 async function obStep4Preview() {
-  wizLoading(4, '샘플 뉴스를 수집하고 요약하고 있어요... (최대 90초)');
+  const instruction = document.getElementById('ob-edit-inst')?.value.trim();
   const rssUrls = [...wizState.selectedRssUrls];
+
+  // 추가 고려 사항이 있으면 먼저 AI 키워드 수정 적용
+  if (instruction) {
+    wizLoading(4, 'AI가 추가 고려 사항을 키워드에 반영하고 있어요...');
+    try {
+      const editResult = await pbApi('POST', '/api/ai/edit-keywords', {
+        current: wizState.keywordSet,
+        instruction,
+      });
+      wizState.keywordSet = editResult.data;
+      if (editResult.rss_suggestions?.length) {
+        wizState.rssSuggestions = editResult.rss_suggestions;
+        const valid = new Set(wizState.rssSuggestions.map(r => r.url));
+        wizState.selectedRssUrls = new Set([...wizState.selectedRssUrls].filter(u => valid.has(u)));
+        if (wizState.selectedRssUrls.size === 0)
+          wizState.selectedRssUrls = new Set(wizState.rssSuggestions.slice(0, 3).map(r => r.url));
+      }
+    } catch(e) {
+      // 수정 실패해도 기존 키워드로 preview 계속 진행
+      console.warn('추가 고려 사항 반영 실패 (기존 키워드로 진행):', e.message);
+    }
+  }
+
+  wizLoading(4, '샘플 뉴스를 수집하고 요약하고 있어요... (최대 90초)');
   try {
     const result = await pbApi('POST', '/api/ai/preview', {
       keywords: wizState.keywordSet,
-      rss_urls: rssUrls,
+      rss_urls: [...wizState.selectedRssUrls],
       max_articles: 3,
     });
     obStep4Render(result);

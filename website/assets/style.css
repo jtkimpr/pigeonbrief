@@ -1204,6 +1204,30 @@ header h1 {
 
 /* ── 위저드 2차 개선 스타일 ───────────────────────── */
 
+/* 주제 설명 구조 가이드 */
+.wiz-topic-guide {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.wiz-topic-tag {
+  display: inline-block;
+  background: #f0f7ff;
+  color: #0071e3;
+  border: 1px solid #b3d3f7;
+  border-radius: 12px;
+  padding: 2px 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.wiz-topic-sep {
+  color: #ccc;
+  font-size: 13px;
+  font-weight: 300;
+}
+
 /* 목적 선택 버튼 */
 .wiz-purpose-row {
   display: flex;
