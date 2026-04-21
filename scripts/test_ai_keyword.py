@@ -5,7 +5,7 @@ Phase 0 — AI 키워드 제안 프롬프트 단독 검증 스크립트
 결과를 JSON으로 저장. 수동 평가 후 프롬프트 튜닝에 사용.
 
 실행:
-    cd /Users/jtmacmini/claude_github/pigeonbrief
+    cd /Users/jtmini/claude_github/pigeonbrief
     python scripts/test_ai_keyword.py
 
 결과:

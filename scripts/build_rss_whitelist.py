@@ -5,7 +5,7 @@ Phase 1 Step 1 — RSS 화이트리스트 50개 빌드 및 검증.
 통과한 것만 data/rss_whitelist.json에 저장.
 
 실행:
-    cd /Users/jtmacmini/claude_github/pigeonbrief
+    cd /Users/jtmini/claude_github/pigeonbrief
     python scripts/build_rss_whitelist.py
 """
 import json
